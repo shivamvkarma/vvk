@@ -17,7 +17,7 @@ def home(request):
     context = {
         'products' : products,
     }
-    return render(request, 'shop/index.html', context)
+    return render(request, 'index.html', context)
 
 
 def shop(request, category_slug=None):
