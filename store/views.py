@@ -13,17 +13,22 @@ from .models import ProductGallery
 
 def home(request):
     products = Product.objects.all().filter(is_available=True)
-    
     context = {
         'products' : products,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'coming_soon.html', context)
+
+from django.shortcuts import render
+
+def error_404_view(request, exception):
+    return render(request, '404.html', status=404)
+
+
 
 
 def shop(request, category_slug=None):
     categories = None
     products = None
-    
 
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
