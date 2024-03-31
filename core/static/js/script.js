@@ -1820,10 +1820,10 @@
     });
 
     $(function () {
-        $(".product-load-more .col-grid-box").slice(0, 8).show();
+        $(".product-load-more .col-grid-box").slice(0, 20).show();
         $(".loadMore").on('click', function (e) {
             e.preventDefault();
-            $(".product-load-more .col-grid-box:hidden").slice(0, 4).slideDown();
+            $(".product-load-more .col-grid-box:hidden").slice(0, 8).slideDown();
             if ($(".product-load-more .col-grid-box:hidden").length === 0) {
                 $(".loadMore").text('no more products');
             }

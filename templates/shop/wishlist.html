@@ -44,7 +44,6 @@
 
 <body class="theme-color-1">
 
-
     <!-- header start -->
     {% include "header.html" %}
     <!-- header end -->
@@ -56,14 +55,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>create account</h2>
+                        <h2>wishlist</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">create account</li>
+                            <li class="breadcrumb-item active">wishlist</li>
                         </ol>
                     </nav>
                 </div>
@@ -74,57 +73,117 @@
 
 
     <!--section start-->
-    <section class="register-page section-b-space">
+    <section class="wishlist-section section-b-space">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h3>create account</h3>
-                    <div class="theme-card">
-                        <form class="theme-form" action="{% url 'accounts:register' %}" method="post">
-                            {% csrf_token %}
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <label for="id_first_name">First Name</label>
-                                    <input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="First Name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="id_last_name">Last Name</label>
-                                    <input type="text" class="form-control" id="id_last_name" name="last_name" placeholder="Last Name" required>
-                                </div>
-                            </div>
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <label for="id_phone_number">Phone Number</label>
-                                    <input type="text" class="form-control" id="id_phone_number" name="Phone_number" placeholder="Phone Number" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="id_email">Email</label>
-                                    <input type="email" class="form-control" id="id_email" name="email" placeholder="Email" required>
-                                </div>
-                            </div>
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <label for="id_password">Password</label>
-                                    <input type="password" class="form-control" id="id_password" name="password" placeholder="Enter your password" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="id_repeat_password">Confirm Password</label>
-                                    <input type="password" class="form-control" id="id_repeat_password" name="repeat_password" placeholder="Confirm Password" required>
-                                </div>
-                            </div>
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-solid w-auto">Create Account</button>
-                                </div>
-                            </div>
-                        </form>
-                        
-                    </div>
+                <div class="col-sm-12 table-responsive-xs">
+                    <table class="table cart-table">
+                        <thead>
+                            <tr class="table-head">
+                                <th scope="col">image</th>
+                                <th scope="col">product name</th>
+                                <th scope="col">price</th>
+                                <th scope="col">availability</th>
+                                <th scope="col">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#"><img src="../assets/images/pro3/1.jpg" alt=""></a>
+                                </td>
+                                <td><a href="#">cotton shirt</a>
+                                    <div class="mobile-cart-content row">
+                                        <div class="col">
+                                            <p>in stock</p>
+                                        </div>
+                                        <div class="col">
+                                            <h2 class="td-color">$63.00</h2>
+                                        </div>
+                                        <div class="col">
+                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
+                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h2>$63.00</h2>
+                                </td>
+                                <td>
+                                    <p>in stock</p>
+                                </td>
+                                <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
+                                        class="cart"><i class="ti-shopping-cart"></i></a></td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#"><img src="../assets/images/pro3/27.jpg" alt=""></a>
+                                </td>
+                                <td><a href="#">cotton shirt</a>
+                                    <div class="mobile-cart-content row">
+                                        <div class="col">
+                                            <p>in stock</p>
+                                        </div>
+                                        <div class="col">
+                                            <h2 class="td-color">$63.00</h2>
+                                        </div>
+                                        <div class="col">
+                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
+                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h2>$63.00</h2>
+                                </td>
+                                <td>
+                                    <p>in stock</p>
+                                </td>
+                                <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
+                                        class="cart"><i class="ti-shopping-cart"></i></a></td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#"><img src="../assets/images/pro3/35.jpg" alt=""></a>
+                                </td>
+                                <td><a href="#">cotton shirt</a>
+                                    <div class="mobile-cart-content row">
+                                        <div class="col">
+                                            <p>in stock</p>
+                                        </div>
+                                        <div class="col">
+                                            <h2 class="td-color">$63.00</h2>
+                                        </div>
+                                        <div class="col">
+                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
+                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h2>$63.00</h2>
+                                </td>
+                                <td>
+                                    <p>in stock</p>
+                                </td>
+                                <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
+                                        class="cart"><i class="ti-shopping-cart"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+            <div class="row wishlist-buttons">
+                <div class="col-12"><a href="#" class="btn btn-solid">continue shopping</a> <a href="#"
+                        class="btn btn-solid">check out</a></div>
             </div>
         </div>
     </section>
-    <!--Section ends-->
+    <!--section end-->
 
 
     <!-- footer start -->
@@ -266,6 +325,15 @@
     </footer>
     <!-- footer end -->
 
+
+
+
+
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
 
 
 

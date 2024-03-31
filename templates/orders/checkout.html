@@ -47,8 +47,8 @@
 
     <!-- header start -->
     {% include "header.html" %}
-    <!-- header end -->
 
+    <!-- header end -->
 
     <!-- breadcrumb start -->
     <div class="breadcrumb-section">
@@ -56,14 +56,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>create account</h2>
+                        <h2>Check-out</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">create account</li>
+                            <li class="breadcrumb-item active" aria-current="page">Check-out</li>
                         </ol>
                     </nav>
                 </div>
@@ -73,58 +73,139 @@
     <!-- breadcrumb End -->
 
 
-    <!--section start-->
-    <section class="register-page section-b-space">
+    <!-- section start -->
+    <section class="section-b-space">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3>create account</h3>
-                    <div class="theme-card">
-                        <form class="theme-form" action="{% url 'accounts:register' %}" method="post">
-                            {% csrf_token %}
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <label for="id_first_name">First Name</label>
-                                    <input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="First Name" required>
+            <div class="checkout-page">
+                <div class="checkout-form">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12 col-xs-12">
+                                <div class="checkout-title">
+                                    <h3>Billing Details</h3>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="id_last_name">Last Name</label>
-                                    <input type="text" class="form-control" id="id_last_name" name="last_name" placeholder="Last Name" required>
+                                <div class="row check-out">
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">First Name</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Last Name</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Phone</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Email Address</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Country</div>
+                                        <select>
+                                            <option>India</option>
+                                            <option>South Africa</option>
+                                            <option>United State</option>
+                                            <option>Australia</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Address</div>
+                                        <input type="text" name="field-name" value="" placeholder="Street address">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Town/City</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                        <div class="field-label">State / County</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                        <div class="field-label">Postal Code</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <input type="checkbox" name="shipping-option" id="account-option"> &ensp;
+                                        <label for="account-option">Create An Account?</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <label for="id_phone_number">Phone Number</label>
-                                    <input type="text" class="form-control" id="id_phone_number" name="Phone_number" placeholder="Phone Number" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="id_email">Email</label>
-                                    <input type="email" class="form-control" id="id_email" name="email" placeholder="Email" required>
+                            <div class="col-lg-6 col-sm-12 col-xs-12">
+                                <div class="checkout-details">
+                                    <div class="order-box">
+                                        <div class="title-box">
+                                            <div>Product <span>Total</span></div>
+                                        </div>
+                                        <ul class="qty">
+                                            <li>Pink Slim Shirt × 1 <span>$25.10</span></li>
+                                            <li>SLim Fit Jeans × 1 <span>$555.00</span></li>
+                                        </ul>
+                                        <ul class="sub-total">
+                                            <li>Subtotal <span class="count">$380.10</span></li>
+                                            <li>Shipping
+                                                <div class="shipping">
+                                                    <div class="shopping-option">
+                                                        <input type="checkbox" name="free-shipping" id="free-shipping">
+                                                        <label for="free-shipping">Free Shipping</label>
+                                                    </div>
+                                                    <div class="shopping-option">
+                                                        <input type="checkbox" name="local-pickup" id="local-pickup">
+                                                        <label for="local-pickup">Local Pickup</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="total">
+                                            <li>Total <span class="count">$620.00</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="payment-box">
+                                        <div class="upper-box">
+                                            <div class="payment-options">
+                                                <ul>
+                                                    <li>
+                                                        <div class="radio-option">
+                                                            <input type="radio" name="payment-group" id="payment-1"
+                                                                checked="checked">
+                                                            <label for="payment-1">Check Payments<span
+                                                                    class="small-text">Please send a check to Store
+                                                                    Name, Store Street, Store Town, Store State /
+                                                                    County, Store Postcode.</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="radio-option">
+                                                            <input type="radio" name="payment-group" id="payment-2">
+                                                            <label for="payment-2">Cash On Delivery<span
+                                                                    class="small-text">Please send a check to Store
+                                                                    Name, Store Street, Store Town, Store State /
+                                                                    County, Store Postcode.</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="radio-option paypal">
+                                                            <input type="radio" name="payment-group" id="payment-3">
+                                                            <label for="payment-3">PayPal<span class="image"><img
+                                                                        src="../assets/images/paypal.png"
+                                                                        alt=""></span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="text-end"><a href="#" class="btn-solid btn">Place Order</a></div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <label for="id_password">Password</label>
-                                    <input type="password" class="form-control" id="id_password" name="password" placeholder="Enter your password" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="id_repeat_password">Confirm Password</label>
-                                    <input type="password" class="form-control" id="id_repeat_password" name="repeat_password" placeholder="Confirm Password" required>
-                                </div>
-                            </div>
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-solid w-auto">Create Account</button>
-                                </div>
-                            </div>
-                        </form>
-                        
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-    <!--Section ends-->
+    <!-- section end -->
 
 
     <!-- footer start -->
@@ -265,6 +346,14 @@
         </div>
     </footer>
     <!-- footer end -->
+
+
+
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
 
 
 
