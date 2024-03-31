@@ -13,7 +13,7 @@ from .models import ProductGallery
 
 def home(request):
     products = Product.objects.all().filter(is_available=True)
-    
+
     context = {
         'products' : products,
     }
@@ -39,18 +39,20 @@ def shop(request, category_slug=None):
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
         products_count = products.count()
+
+            
         
     
     for product in products:
         reviews = ReviewRating.objects.order_by('-updated_at').filter(product_id=product.id, status=True)
-
+    
     context = {
         'category_slug': category_slug,
         'products' : paged_products,
         'products_count': products_count,
         
     }
-    return render(request, 'shop/shop/shop.html', context)
+    return render(request, 'shop/shop.html', context)
 
 
 def product_details(request, category_slug, product_details_slug):
@@ -79,7 +81,7 @@ def product_details(request, category_slug, product_details_slug):
         'reviews': reviews,
         'product_gallery':product_gallery,
     }
-    return render(request, 'shop/shop/product_details.html', context)
+    return render(request, 'shop/product_detail.html', context)
 
 
 def search(request):
