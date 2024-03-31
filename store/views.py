@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
-from .models import Product, Category
+from .models import BannerContent, Product, Category
 from cart.views import _cart_id
 from cart.models import CartItem
 from .models import ReviewRating
@@ -123,3 +123,7 @@ def review(request, product_id):
                 data.save()
                 messages.success(request, 'Thank you, your review Posted!')
                 return redirect(url)
+
+def home(request):
+    banner_contents = BannerContent.objects.all()
+    return render(request, 'index.html', {'banner_contents': banner_contents})

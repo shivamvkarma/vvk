@@ -114,7 +114,7 @@ class ReviewRating(models.Model):
 
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product, default=None ,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='product_gallery')
+    image = models.ImageField(upload_to='photos/product_gallery')
     
     class Meta:
         verbose_name = 'productgallery'
@@ -122,3 +122,15 @@ class ProductGallery(models.Model):
 
     def __str__(self):
         return self.product.name
+    
+class BannerContent(models.Model):
+    title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255)
+    button_text = models.CharField(max_length=50)
+    button_link = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='banner_images/', default='default_image.jpg')
+    mobile_view_image = models.ImageField(upload_to='banner_images/', default='default_image.jpg')
+
+    def __str__(self):
+        return self.title
+    

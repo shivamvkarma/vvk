@@ -1,13 +1,11 @@
     {% load static %}
-
-
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="multikart">
         <meta name="keywords" content="multikart">
         <meta name="author" content="multikart">
@@ -38,7 +36,6 @@
 
         <!-- Theme css -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
     </head>
 
 
@@ -934,35 +931,18 @@
     <!-- Home slider -->
     <section class="p-0">
         <div class="slide-1 home-slider">
-            <div>
-                <div class="home  text-center">
-                    <img src="../assets/images/home-banner/1.jpg" alt="" class="bg-img blur-up lazyload">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="slider-contain">
-                                    <div>
-                                        <h4>welcome to fashion</h4>
-                                        <h1>men fashion</h1>
-                                        <a href="#" class="btn btn-solid">shop now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% for content in banner_contents %}
             <div>
                 <div class="home text-center">
-                    <img src="../assets/images/home-banner/2.jpg" alt="" class="bg-img blur-up lazyload">
-                    <div class="container">
+                    <img src="{% if request.user_agent.is_mobile %}{{ content.mobile_view_image.url }}{% else %}{{ content.image.url }}{% endif %}" alt="" class="bg-img blur-up lazyload">
+                <div class="container">
                         <div class="row">
                             <div class="col">
                                 <div class="slider-contain">
                                     <div>
-                                        <h4>welcome to fashion</h4>
-                                        <h1>women fashion</h1>
-                                        <a href="#" class="btn btn-solid">shop now</a>
+                                        <h4>{{ content.title }}</h4>
+                                        <h1>{{ content.subtitle }}</h1>
+                                        <a href="{{ content.button_link }}" class="btn btn-solid">{{ content.button_text }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -970,9 +950,10 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </section>
-    <!-- Home slider end -->
+    
 
 
     <!-- collection banner -->
@@ -2936,6 +2917,7 @@
 <script src="{% static 'js/script.js' %}"></script>
 
 <script>
+
     $(window).on('load', function () {
         setTimeout(function () {
             $('#exampleModal').modal('show');
