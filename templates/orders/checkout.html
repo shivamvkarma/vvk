@@ -1,0 +1,412 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="multikart">
+    <meta name="keywords" content="multikart">
+    <meta name="author" content="multikart">
+    <link rel="icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <title>Multikart - Multi-purpose E-commerce Html Template</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/font-awesome.css' %}">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick-theme.css' %}">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/animate.css' %}">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/themify-icons.css' %}">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/bootstrap.css' %}">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body class="theme-color-1">
+
+
+    <!-- header start -->
+    {% include "header.html" %}
+
+    <!-- header end -->
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>Check-out</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Check-out</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!-- section start -->
+    <section class="section-b-space">
+        <div class="container">
+            <div class="checkout-page">
+                <div class="checkout-form">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12 col-xs-12">
+                                <div class="checkout-title">
+                                    <h3>Billing Details</h3>
+                                </div>
+                                <div class="row check-out">
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">First Name</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Last Name</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Phone</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Email Address</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Country</div>
+                                        <select>
+                                            <option>India</option>
+                                            <option>South Africa</option>
+                                            <option>United State</option>
+                                            <option>Australia</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Address</div>
+                                        <input type="text" name="field-name" value="" placeholder="Street address">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Town/City</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                        <div class="field-label">State / County</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                        <div class="field-label">Postal Code</div>
+                                        <input type="text" name="field-name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <input type="checkbox" name="shipping-option" id="account-option"> &ensp;
+                                        <label for="account-option">Create An Account?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12 col-xs-12">
+                                <div class="checkout-details">
+                                    <div class="order-box">
+                                        <div class="title-box">
+                                            <div>Product <span>Total</span></div>
+                                        </div>
+                                        <ul class="qty">
+                                            <li>Pink Slim Shirt × 1 <span>$25.10</span></li>
+                                            <li>SLim Fit Jeans × 1 <span>$555.00</span></li>
+                                        </ul>
+                                        <ul class="sub-total">
+                                            <li>Subtotal <span class="count">$380.10</span></li>
+                                            <li>Shipping
+                                                <div class="shipping">
+                                                    <div class="shopping-option">
+                                                        <input type="checkbox" name="free-shipping" id="free-shipping">
+                                                        <label for="free-shipping">Free Shipping</label>
+                                                    </div>
+                                                    <div class="shopping-option">
+                                                        <input type="checkbox" name="local-pickup" id="local-pickup">
+                                                        <label for="local-pickup">Local Pickup</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="total">
+                                            <li>Total <span class="count">$620.00</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="payment-box">
+                                        <div class="upper-box">
+                                            <div class="payment-options">
+                                                <ul>
+                                                    <li>
+                                                        <div class="radio-option">
+                                                            <input type="radio" name="payment-group" id="payment-1"
+                                                                checked="checked">
+                                                            <label for="payment-1">Check Payments<span
+                                                                    class="small-text">Please send a check to Store
+                                                                    Name, Store Street, Store Town, Store State /
+                                                                    County, Store Postcode.</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="radio-option">
+                                                            <input type="radio" name="payment-group" id="payment-2">
+                                                            <label for="payment-2">Cash On Delivery<span
+                                                                    class="small-text">Please send a check to Store
+                                                                    Name, Store Street, Store Town, Store State /
+                                                                    County, Store Postcode.</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="radio-option paypal">
+                                                            <input type="radio" name="payment-group" id="payment-3">
+                                                            <label for="payment-3">PayPal<span class="image"><img
+                                                                        src="../assets/images/paypal.png"
+                                                                        alt=""></span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="text-end"><a href="#" class="btn-solid btn">Place Order</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end -->
+
+
+    <!-- footer start -->
+    <footer class="footer-light">
+        <div class="light-layout">
+            <div class="container">
+                <section class="small-section border-section border-top-0">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="subscribe">
+                                <div>
+                                    <h4>KNOW IT ALL FIRST!</h4>
+                                    <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <form
+                                action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
+                                class="form-inline subscribe-form auth-form needs-validation" method="post"
+                                id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                                <div class="form-group mx-sm-3">
+                                    <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
+                                        placeholder="Enter your email" required="required">
+                                </div>
+                                <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <section class="section-b-space light-layout">
+            <div class="container">
+                <div class="row footer-theme partition-f">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-title footer-mobile-title">
+                            <h4>about</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <div class="footer-logo"><img src="../assets/images/icon/logo.png" alt=""></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                            <div class="footer-social">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col offset-xl-1">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>my account</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul>
+                                    <li><a href="#">mens</a></li>
+                                    <li><a href="#">womens</a></li>
+                                    <li><a href="#">clothing</a></li>
+                                    <li><a href="#">accessories</a></li>
+                                    <li><a href="#">featured</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>why we choose</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul>
+                                    <li><a href="#">shipping & return</a></li>
+                                    <li><a href="#">secure shopping</a></li>
+                                    <li><a href="#">gallary</a></li>
+                                    <li><a href="#">affiliates</a></li>
+                                    <li><a href="#">contacts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>store information</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul class="contact-list">
+                                    <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India
+                                        345-659</li>
+                                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
+                                    <li><i class="fa fa-envelope"></i>Email Us: Support@Multikart.com</li>
+                                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="footer-end">
+                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by
+                                pixelstrap</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="payment-card-bottom">
+                            <ul>
+                                <li>
+                                    <a href="#"><img src="../assets/images/icon/visa.png" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../assets/images/icon/mastercard.png" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../assets/images/icon/paypal.png" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../assets/images/icon/american-express.png" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../assets/images/icon/discover.png" alt=""></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+
+
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
+
+
+
+
+   <!-- latest jquery-->
+   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+   <!-- fly cart ui jquery-->
+   <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+   
+   <!-- exitintent jquery-->
+   <script src="{% static 'js/jquery.exitintent.js' %}"></script>
+   <script src="{% static 'js/exit.js' %}"></script>
+   
+   <!-- slick js-->
+   <script src="{% static 'js/slick.js' %}"></script>
+   
+   <!-- menu js-->
+   <script src="{% static 'js/menu.js' %}"></script>
+   
+   <!-- lazyload js-->
+   <script src="{% static 'js/lazysizes.min.js' %}"></script>
+   
+   <!-- Bootstrap js-->
+   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   
+   <!-- Bootstrap Notification js-->
+   <script src="{% static 'js/bootstrap-notify.min.js' %}"></script>
+   
+   <!-- Fly cart js-->
+   <script src="{% static 'js/fly-cart.js' %}"></script>
+   
+   <!-- Theme js-->
+   <script src="{% static 'js/theme-setting.js' %}"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+   
+   <script>
+       $(window).on('load', function () {
+           setTimeout(function () {
+               $('#exampleModal').modal('show');
+           }, 2500);
+       });
+   
+       function openSearch() {
+           document.getElementById("search-overlay").style.display = "block";
+       }
+   
+       function closeSearch() {
+           document.getElementById("search-overlay").style.display = "none";
+       }
+   </script>
+   
+   </body>
+   
+   </html>
+   
