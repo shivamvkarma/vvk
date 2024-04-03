@@ -20,8 +20,13 @@
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
                                 My Account
                                 <ul class="onhover-show-div">
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">register</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a href="{% url 'accounts:dashboard' %}">Dashboard</a> </li>
+                                    <li><a href="{% url 'accounts:logout' %}">Log Out</a> </li>
+                                    {% else %}
+                                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                                    <li><a href="{% url 'accounts:register' %}">register</a></li>
+                                    {% endif %}
                                 </ul>
                             </li>
                         </ul>
@@ -34,131 +39,10 @@
                 <div class="col-sm-12">
                     <div class="main-menu">
                         <div class="menu-left">
-                            <div class="navbar">
-                                <a href="javascript:void(0)" onclick="openNav()">
-                                    <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
-                                    </div>
-                                </a>
-                                <div id="mySidenav" class="sidenav">
-                                    <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
-                                    <nav>
-                                        <div onclick="closeNav()">
-                                            <div class="sidebar-back text-start"><i class="fa fa-angle-left pe-2"
-                                                    aria-hidden="true"></i> Back</div>
-                                        </div>
-                                        <ul id="sub-menu" class="sm pixelstrap sm-vertical">
-                                            <li> <a href="#">clothing</a>
-                                                <ul class="mega-menu clothing-menu">
-                                                    <li>
-                                                        <div class="row m-0">
-                                                            <div class="col-xl-4">
-                                                                <div class="link-section">
-                                                                    <h5>women's fashion</h5>
-                                                                    <ul>
-                                                                        <li><a href="#">dresses</a></li>
-                                                                        <li><a href="#">skirts</a></li>
-                                                                        <li><a href="#">westarn wear</a></li>
-                                                                        <li><a href="#">ethic wear</a></li>
-                                                                        <li><a href="#">sport wear</a></li>
-                                                                    </ul>
-                                                                    <h5>men's fashion</h5>
-                                                                    <ul>
-                                                                        <li><a href="#">sports wear</a></li>
-                                                                        <li><a href="#">western wear</a></li>
-                                                                        <li><a href="#">ethic wear</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-4">
-                                                                <div class="link-section">
-                                                                    <h5>accessories</h5>
-                                                                    <ul>
-                                                                        <li><a href="#">fashion jewellery</a>
-                                                                        </li>
-                                                                        <li><a href="#">caps and hats</a></li>
-                                                                        <li><a href="#">precious jewellery</a>
-                                                                        </li>
-                                                                        <li><a href="#">necklaces</a></li>
-                                                                        <li><a href="#">earrings</a></li>
-                                                                        <li><a href="#">wrist wear</a></li>
-                                                                        <li><a href="#">ties</a></li>
-                                                                        <li><a href="#">cufflinks</a></li>
-                                                                        <li><a href="#">pockets squares</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-4">
-                                                                <a href="#" class="mega-menu-banner"><img
-                                                                        src="{% static 'images/mega-menu/fashion.jpg' %}"
-                                                                        alt="" class="img-fluid blur-up lazyload"></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            
-                                            
-                                            <li> <a href="#">Accessories</a>
-                                                <ul>
-                                                    <li><a href="#">fashion jewellery</a></li>
-                                                    <li><a href="#">caps and hats</a></li>
-                                                    <li><a href="#">precious jewellery</a></li>
-                                                    <li> <a href="#">more..</a>
-                                                        <ul>
-                                                            <li><a href="#">necklaces</a></li>
-                                                            <li><a href="#">earrings</a></li>
-                                                            <li><a href="#">wrist wear</a></li>
-                                                            <li> <a href="#">accessories</a>
-                                                                <ul>
-                                                                    <li><a href="#">ties</a></li>
-                                                                    <li><a href="#">cufflinks</a></li>
-                                                                    <li><a href="#">pockets squares</a></li>
-                                                                    <li><a href="#">helmets</a></li>
-                                                                    <li><a href="#">scarves</a></li>
-                                                                    <li> <a href="#">more...</a>
-                                                                        <ul>
-                                                                            <li><a href="#">accessory gift
-                                                                                    sets</a>
-                                                                            </li>
-                                                                            <li><a href="#">travel
-                                                                                    accessories</a>
-                                                                            </li>
-                                                                            <li><a href="#">phone cases</a></li>
-                                                                        </ul>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                            <li><a href="#">belts & more</a></li>
-                                                            <li><a href="#">wearable</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">house of design</a></li>
-                                            <li> <a href="#">beauty & personal care</a>
-                                                <ul>
-                                                    <li><a href="#">makeup</a></li>
-                                                    <li><a href="#">skincare</a></li>
-                                                    <li><a href="#">premium beaty</a></li>
-                                                    <li> <a href="#">more</a>
-                                                        <ul>
-                                                            <li><a href="#">fragrances</a></li>
-                                                            <li><a href="#">luxury beauty</a></li>
-                                                            <li><a href="#">hair care</a></li>
-                                                            <li><a href="#">tools & brushes</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">home & decor</a></li>
-                                            <li><a href="#">kitchen</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+
                             <div class="brand-logo">
-                                <a href="{% url 'shop:home' %}"><img src="{% static 'images/icon/logo.png' %}"
-                                        class="img-fluid blur-up lazyload" alt=""></a>
+                                <a href="{% url 'shop:home' %}"><img src="{% static 'images/icon/FUKU.png' %}"
+                                        class="img-fluid blur-up lazyload" alt="" style="height:40px"></a>
                             </div>
                         </div>
                         <div class="menu-right pull-right">
@@ -191,10 +75,9 @@
                                         <li>
                                             <a href="#">Information</a>
                                             <ul>
-                                                <li><a href="#">About Us</a></li>
+                                                <li><a href="{% url 'app:about' %}">About Us</a></li>
                                                 <li><a href="#">Design vote or Feedback</a></li>
                                                 <li> <a href="#">Community</a></li>
-                                                <li><a href="#">blog</a></li>
 
                                             </ul>
                                         </li>
@@ -233,7 +116,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="onhover-div mobile-cart"><a href="{% url 'cart:wishlist' %}"><img
+                                        <li class="onhover-div mobile-wishlist"><a href="{% url 'cart:wishlist' %}"><img
                                             src="{% static 'images/icon/heart-1.png' %}" alt=""></a>
                                         </li>
                                         

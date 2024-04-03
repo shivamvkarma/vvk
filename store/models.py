@@ -115,7 +115,7 @@ class ReviewRating(models.Model):
 
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product, default=None ,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='photos/product_gallery')
+    image = models.ImageField(upload_to='product_gallery')
     
     class Meta:
         verbose_name = 'productgallery'

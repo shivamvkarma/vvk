@@ -272,7 +272,7 @@
                                     class="img-fluid blur-up lazyload image_zoom_cls-{{ forloop.counter1 }}"></div>
                             {% endfor %}
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-12 p-0">
                                 <div class="slider-nav">
@@ -289,7 +289,7 @@
                     </div>
                     <div class="col-lg-6 rtl-text">
                         <div class="product-right">
-                            <div class="product-count">
+                            {% comment %} <div class="product-count">
                                 <ul>
                                     <li>
                                         <img src="../assets/images/fire.gif" class="img-fluid" alt="image">
@@ -302,7 +302,7 @@
                                         <span class="lang">active view this</span>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> {% endcomment %}
                             <h2>{{single_product.name}}</h2>
                             <div class="rating-section">
                                 <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -310,73 +310,89 @@
                                 </div>
                                 <h6>{{single_product.countReview}} ratings</h6>
                             </div>
-                            <div class="label-section">
-                                <span class="badge badge-grey-color">#1 Best seller</span>
-                                <span class="label-text">in fashion</span>
-                            </div>
-                            <h3 class="price-detail">₹{{single_product.selling_price}} <del>₹{{single_product.price}}</del><span>{{single_product.discount}}% off</span></h3>
-                            <ul class="color-variant">
-                                <li class="bg-light0 active"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                            <div id="selectSize" class="addeffect-section product-description border-product">
-                                <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal"
-                                            data-bs-target="#sizemodal">size
-                                            chart</a></span></h6>
-                                <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sheer
-                                                    Straight Kurta</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <form id="add-to-cart-form" action="{% url 'cart:add_cart' single_product.id %}" method="POST">
+                                {% csrf_token %}
+                                <div class="label-section">
+                                    <span class="badge badge-grey-color">#1 Best seller</span>
+                                    <span class="label-text">in fashion</span>
+                                </div>
+                                <h3 class="price-detail">₹{{single_product.selling_price}} <del>₹{{single_product.price}}</del><span>{{single_product.discount}}% off</span></h3>
+                                <ul class="color-variant">
+                                    <li class="bg-light0 active"></li>
+                                    <li class="bg-light1"></li>
+                                    <li class="bg-light2"></li>
+                                </ul>
+                                <div id="selectSize" class="addeffect-section product-description border-product">
+                                    {% if single_product.variation_set.sizes %}
+                                    <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal" data-bs-target="#sizemodal">size chart</a></span></h6>
+                                    <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <div class="modal-body"><img src="../assets/images/size-chart.jpg" alt="" class="img-fluid blur-up lazyload"></div>
                                             </div>
-                                            <div class="modal-body"><img src="../assets/images/size-chart.jpg" alt=""
-                                                    class="img-fluid blur-up lazyload"></div>
+                                        </div>
+                                    </div>
+                                    <h6 class="error-message" style="display: none;">please select size</h6>
+                                    
+                                    <div class="size-box">
+                                        <ul>
+                                            {% for x in single_product.variation_set.sizes%}
+                                            <li><a href="javascript:void(0)">{{x.variation_value | capfirst}}</a></li>
+                                            {% endfor %}
+                                            {% comment %} <li><a href="javascript:void(0)">m</a></li>
+                                            <li><a href="javascript:void(0)">l</a></li>
+                                            <li><a href="javascript:void(0)">xl</a></li> {% endcomment %}
+                                        </ul>
+                                    </div>
+                                    {% endif %}
+                                    <h6 class="product-title">quantity</h6>
+                                    <div class="qty-box">
+                                        <div class="input-group"><span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
+                                            <input type="text" name="quantity" class="form-control input-number" value="1">
+                                            <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span>
                                         </div>
                                     </div>
                                 </div>
-                                <h6 class="error-message">please select size</h6>
-                                <div class="size-box">
-                                    <ul>
-                                        <li><a href="javascript:void(0)">s</a></li>
-                                        <li><a href="javascript:void(0)">m</a></li>
-                                        <li><a href="javascript:void(0)">l</a></li>
-                                        <li><a href="javascript:void(0)">xl</a></li>
-                                    </ul>
+                                <div class="product-buttons">
+                                    <button type="button" id="cartEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to cart</button>
+                                    <a href="#" class="btn btn-solid"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a>
                                 </div>
-                                <h6 class="product-title">quantity</h6>
-                                <div class="qty-box">
-                                    <div class="input-group"><span class="input-group-prepend"><button type="button"
-                                                class="btn quantity-left-minus" data-type="minus" data-field=""><i
-                                                    class="ti-angle-left"></i></button> </span>
-                                        <input type="text" name="quantity" class="form-control input-number" value="1">
-                                        <span class="input-group-prepend"><button type="button"
-                                                class="btn quantity-right-plus" data-type="plus" data-field=""><i
-                                                    class="ti-angle-right"></i></button></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-buttons"><a href="javascript:void(0)" id="cartEffect"
-                                    class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1"
-                                        aria-hidden="true"></i> add to cart</a> <a href="#" class="btn btn-solid"><i
-                                        class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a></div>
+                            </form>
+                            
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    document.getElementById("cartEffect").addEventListener("click", function () {
+                                        if (!$(".size-box ul").hasClass("selected")) {
+                                            $(".error-message").show(); // Show error message if size is not selected
+                                        } else {
+                                            $(".error-message").hide(); // Hide error message if size is selected
+                                            $("#add-to-cart-form").submit(); // Submit the form if size is selected
+                                        }
+                                    });
+                            
+                                    $(".size-box ul li").on("click", function (e) {
+                                        $(".size-box ul li").removeClass("active");
+                                        $("#selectSize").removeClass("cartMove");
+                                        $(this).addClass("active");
+                                        $(this).parent().addClass("selected");
+                                    });
+                                });
+                            </script>
+                            
                             <div class="product-count">
                                 <ul>
                                     <li>
-                                        <img src="../assets/images/icon/truck.png" class="img-fluid" alt="image">
-                                        <span class="lang">Free shipping for orders above ₹500 USD</span>
+                                        <img src="{% static 'images/icon/truck.png' %}" class="img-fluid" alt="image">
+                                        <span class="lang">Free shipping for orders above ₹ 500 </span>
                                     </li>
                                 </ul>
                             </div>
                             <div class="border-product">
-                                <h6 class="product-title">Sales Ends In</h6>
-                                <div class="timer">
-                                    <p id="demo"></p>
-                                </div>
+                               
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">shipping info</h6>
@@ -401,7 +417,7 @@
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">100% secure payment</h6>
-                                <img src="../assets/images/payment.png" class="img-fluid mt-1" alt="">
+                                <img src="{% static 'images/payment.png' %}" class="img-fluid mt-1" alt="">
                             </div>
                         </div>
                     </div>
@@ -775,165 +791,12 @@
     <!-- product section end -->
 
 
-    <!-- footer start -->
-    <footer class="footer-light">
-        <div class="light-layout">
-            <div class="container">
-                <section class="small-section border-section border-top-0">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="subscribe">
-                                <div>
-                                    <h4>KNOW IT ALL FIRST!</h4>
-                                    <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <form
-                                action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
-                                class="form-inline subscribe-form auth-form needs-validation" method="post"
-                                id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                                <div class="form-group mx-sm-3">
-                                    <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
-                                        placeholder="Enter your email" required="required">
-                                </div>
-                                <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <section class="section-b-space light-layout">
-            <div class="container">
-                <div class="row footer-theme partition-f">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-title footer-mobile-title">
-                            <h4>about</h4>
-                        </div>
-                        <div class="footer-contant">
-                            <div class="footer-logo"><img src="../assets/images/icon/logo.png" alt=""></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                            <div class="footer-social">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col offset-xl-1">
-                        <div class="sub-title">
-                            <div class="footer-title">
-                                <h4>my account</h4>
-                            </div>
-                            <div class="footer-contant">
-                                <ul>
-                                    <li><a href="#">mens</a></li>
-                                    <li><a href="#">womens</a></li>
-                                    <li><a href="#">clothing</a></li>
-                                    <li><a href="#">accessories</a></li>
-                                    <li><a href="#">featured</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="sub-title">
-                            <div class="footer-title">
-                                <h4>why we choose</h4>
-                            </div>
-                            <div class="footer-contant">
-                                <ul>
-                                    <li><a href="#">shipping & return</a></li>
-                                    <li><a href="#">secure shopping</a></li>
-                                    <li><a href="#">gallary</a></li>
-                                    <li><a href="#">affiliates</a></li>
-                                    <li><a href="#">contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="sub-title">
-                            <div class="footer-title">
-                                <h4>store information</h4>
-                            </div>
-                            <div class="footer-contant">
-                                <ul class="contact-list">
-                                    <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India
-                                        345-659</li>
-                                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
-                                    <li><i class="fa fa-envelope"></i>Email Us: Support@Multikart.com</li>
-                                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="sub-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-md-6 col-sm-12">
-                        <div class="footer-end">
-                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by
-                                pixelstrap</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6 col-sm-12">
-                        <div class="payment-card-bottom">
-                            <ul>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/visa.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/mastercard.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/paypal.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/american-express.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/discover.png" alt=""></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- footer -->
+    {% include "components/footer.html" %}
     <!-- footer end -->
 
 
-    <!-- recently purchase product -->
-    <div class="media recently-purchase">
-        <img src="../assets/images/pro3/sm.jpg" alt="Floral Dress ">
-        <div class="media-body">
-            <div>
-                <div class="title">
-                    Some recently purchase this item
-                </div>
-                <a href="#">
-                    <span class="product-name">
-                        Floral Dress
-                    </span>
-                </a>
-                <small class="timeAgo">50 minutes ago</small>
-            </div>
-        </div>
-        <a href="javascript:void(0)" class="close-popup fa fa-times"></a>
-    </div>
-    <!-- recently purchase product -->
+
 
 
 
@@ -1106,6 +969,17 @@
         <h3>added to cart</h3>
     </div>
     <!-- added to cart notification -->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("add-to-cart-btn").addEventListener("click", function () {
+                document.getElementById("add-to-cart-form").submit();
+            });
+        });
+    </script>
+
+
 
 
    <!-- latest jquery-->

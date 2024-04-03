@@ -10,13 +10,19 @@ from .forms import ReviewForm
 from django.contrib import messages
 from orders.models import OrderProduct
 from .models import ProductGallery
+from app.models import InstagramImage
 
 def home(request):
+    banner_contents = BannerContent.objects.all()
+    instagram_images = InstagramImage.objects.all()
     products = Product.objects.all().filter(is_available=True)
 
     context = {
         'products' : products,
+        'banner_contents': banner_contents,
+        'instagram_images': instagram_images,
     }
+    print("------------------------------------",products, "-------------------------------------------")
     return render(request, 'index.html', context)
 
 
@@ -126,6 +132,3 @@ def review(request, product_id):
                 messages.success(request, 'Thank you, your review Posted!')
                 return redirect(url)
 
-def home(request):
-    banner_contents = BannerContent.objects.all()
-    return render(request, 'index.html', {'banner_contents': banner_contents})
