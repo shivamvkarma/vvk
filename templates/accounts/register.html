@@ -82,6 +82,29 @@
                     <div class="theme-card">
                         <form class="theme-form" action="{% url 'accounts:register' %}" method="post">
                             {% csrf_token %}
+
+
+                            {% if forms.errors %}
+					
+                                <div class="alert alert-danger" role="alert" style="max-width: 100% !important;">
+                                <p>Please correct the following errors:</p><br>
+                                    {% if forms.email.errors %}
+                                    {% for field in forms.email.errors %}
+                                        <p><b>Email :</b> {{ field }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    {% if forms.non_field_errors %}
+                                    {% for field in forms.non_field_errors %}
+                                        <p><b>Password :</b> {{ field }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </div>
+                                <br>
+                            {% endif %}
+                            
+                            {% include "includes/alerts.html" %}
                             <div class="form-row row">
                                 <div class="col-md-6">
                                     <label for="id_first_name">First Name</label>

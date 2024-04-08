@@ -16,13 +16,13 @@ def home(request):
     banner_contents = BannerContent.objects.all()
     instagram_images = InstagramImage.objects.all()
     products = Product.objects.all().filter(is_available=True)
-
+    categories = Category.objects.all()
     context = {
         'products' : products,
+        'categories': categories,
         'banner_contents': banner_contents,
         'instagram_images': instagram_images,
     }
-    print("------------------------------------",products, "-------------------------------------------")
     return render(request, 'index.html', context)
 
 
@@ -91,6 +91,7 @@ def product_details(request, category_slug, product_details_slug):
 
 
 def search(request):
+    print("IN SERARCH ")
     products_count = 0
     products = None
     paged_products = None
@@ -106,7 +107,7 @@ def search(request):
         'products': products,
         'products_count': products_count,
     }
-    return render(request, 'shop/shop/search.html', context)
+    return render(request, 'shop/search.html', context)
 
 
 

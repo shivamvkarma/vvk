@@ -262,6 +262,8 @@
     <section>
         <div class="collection-wrapper">
             <div class="container">
+				{% include "includes/alerts.html" %}
+
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="product-slick">
@@ -366,11 +368,20 @@
                             <script>
                                 document.addEventListener("DOMContentLoaded", function () {
                                     document.getElementById("cartEffect").addEventListener("click", function () {
-                                        if (!$(".size-box ul").hasClass("selected")) {
-                                            $(".error-message").show(); // Show error message if size is not selected
+                                        // Check if sizes are available
+                                        if (!$(".size-box ul li").length) {
+                                            // No sizes available, submit the form
+                                            $("#add-to-cart-form").submit();
                                         } else {
-                                            $(".error-message").hide(); // Hide error message if size is selected
-                                            $("#add-to-cart-form").submit(); // Submit the form if size is selected
+                                            // Sizes are available, check if a size is selected
+                                            if (!$(".size-box ul").hasClass("selected")) {
+                                                // Show error message if size is not selected
+                                                $(".error-message").show();
+                                            } else {
+                                                // Hide error message if size is selected and submit the form
+                                                $(".error-message").hide();
+                                                $("#add-to-cart-form").submit();
+                                            }
                                         }
                                     });
                             
@@ -382,6 +393,7 @@
                                     });
                                 });
                             </script>
+                            
                             
                             <div class="product-count">
                                 <ul>

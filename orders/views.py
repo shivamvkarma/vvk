@@ -41,10 +41,8 @@ def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
         pass # just ignore
 
     
-    tax = round(((2 * total_price)/100), 2)
-    grand_total = total_price + tax
-    handing = 15.00
-    total = float(grand_total) + handing
+    handing = 40.00 # fixed amount for shipping
+    total = float(total_price) + handing
     
     context = {
         'total_price': total_price,

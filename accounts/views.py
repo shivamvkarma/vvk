@@ -17,13 +17,14 @@ from django.core.mail import EmailMessage
 from .token import account_activation_token
 from django.conf import settings
 
+
 import uuid
 
-# from cart.views import _cart_id
-# from cart.models import Cart, CartItem
-# from orders.models import Order
+from cart.views import _cart_id
+from cart.models import Cart, CartItem
+from orders.models import Order
 from .models import UserProfile
-# from orders.models import OrderProduct
+from orders.models import OrderProduct
 
 def register(request):
     print(request.method)
@@ -100,43 +101,43 @@ def login(request):
         print(user)
 
         if user is not None:
-            # try:
-            #     cart = Cart.objects.get(cart_id=_cart_id(request))
-            #     is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
-            #     if is_cart_item_exists:
-            #         cart_item = CartItem.objects.filter(cart=cart)
+            try:
+                cart = Cart.objects.get(cart_id=_cart_id(request))
+                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
+                if is_cart_item_exists:
+                    cart_item = CartItem.objects.filter(cart=cart)
 
-            #         # Getting the product variations by cart id 
-            #         product_variation = []
-            #         for item in cart_item:
-            #             variation = item.variation.all()
-            #             product_variation.append(list(variation))
+                    # Getting the product variations by cart id 
+                    product_variation = []
+                    for item in cart_item:
+                        variation = item.variation.all()
+                        product_variation.append(list(variation))
 
-            #         # Get the cart items from the user to access his product variations
-            #         cart_item = CartItem.objects.filter(user=user)
-            #         ex_var_list = []
-            #         id = []
-            #         for item in cart_item:
-            #             existing_variation = item.variation.all()
-            #             ex_var_list.append(list(existing_variation))
-            #             id.append(item.id)
+                    # Get the cart items from the user to access his product variations
+                    cart_item = CartItem.objects.filter(user=user)
+                    ex_var_list = []
+                    id = []
+                    for item in cart_item:
+                        existing_variation = item.variation.all()
+                        ex_var_list.append(list(existing_variation))
+                        id.append(item.id)
 
-            #         for pr in product_variation:
-            #             if pr in ex_var_list:
-            #                 index = ex_var_list.index(pr)
-            #                 item_id = id[index]
-            #                 item = CartItem.objects.get(id=item_id)
-            #                 item.quantity += 1
-            #                 item.user = user
-            #                 item.save()
-            #             else:
-            #                 cart_item = CartItem.objects.filter(cart=cart)
+                    for pr in product_variation:
+                        if pr in ex_var_list:
+                            index = ex_var_list.index(pr)
+                            item_id = id[index]
+                            item = CartItem.objects.get(id=item_id)
+                            item.quantity += 1
+                            item.user = user
+                            item.save()
+                        else:
+                            cart_item = CartItem.objects.filter(cart=cart)
 
-            #                 for item in cart_item:
-            #                     item.user = user
-            #                     item.save()
-            # except:
-            #     pass
+                            for item in cart_item:
+                                item.user = user
+                                item.save()
+            except:
+                pass
 
             auth.login(request, user)
             url = request.META.get('HTTP_REFERER')
@@ -181,13 +182,13 @@ def activate(request, uidb64, token):
 
 @login_required(login_url = 'accounts:login')
 def dashboard(request):
-    # orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
+    orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
     print(request.user)
     profile = UserProfile.objects.get(user_id=request.user.id)
     
-    # orders_count = orders.count()
+    orders_count = orders.count()
     context = {
-    #     'orders_count':orders_count,
+        'orders_count':orders_count,
         'profile':profile,
         
     }
@@ -275,13 +276,14 @@ def order_detail(request,order_id):
 def forget_password(request):
     if request.method == 'POST':
         email = request.POST['email']
+        print(email)
         if Account.objects.filter(email=email).exists():
             user = Account.objects.get(email__exact=email)
             
             # SEND EMAIL
             current_site = get_current_site(request)
             subject = 'Reset Your Password'
-            message = render_to_string('shop/accounts/forget_password/send_resetpassword_email.html', {
+            message = render_to_string('accounts/send_resetpassword_email.html', {
                 'user': user,
                 'domain': current_site,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -299,7 +301,7 @@ def forget_password(request):
             messages.error(request, 'This email does not exist!')
             return redirect('accounts:forget_password')
 
-    return render(request, 'shop/accounts/forget_password/forget_password.html') 
+    return render(request, 'accounts/forget_password.html') 
 
 
 def resetpassword_validate(request, uidb64, token):
@@ -339,4 +341,4 @@ def reset_password(request):
             return redirect('accounts:forget_password')
 
     else:
-        return render(request, 'shop/accounts/forget_password/reset_password.html')
+        return render(request, 'accounts/reset_password.html')

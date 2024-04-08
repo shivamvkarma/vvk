@@ -72,9 +72,14 @@
     </div>
     <!-- breadcrumb End -->
 
+    
+
 
     <!-- section start -->
     <section class="section-b-space">
+
+        {% include "includes/alerts.html" %}
+        
         <div class="container">
             <div class="checkout-page">
                 <div class="checkout-form">
@@ -106,9 +111,6 @@
                                         <div class="field-label">Country</div>
                                         <select name="country">
                                             <option value="india" >India</option>
-                                            <option value="south_afrika">South Africa</option>
-                                            <option value="united_states">United State</option>
-                                            <option value="australia">Australia</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
@@ -141,19 +143,19 @@
                                         </div>
                                         <ul class="qty">
                                             {% for cart_item in cart_items %}
-                                                <li>{{cart_item.product.name}} × {{cart_item.quantity}} <span>${{cart_item.sub_total}}</span></li>
+                                                <li>{{cart_item.product.name}} × {{cart_item.quantity}} <span>₹{{cart_item.sub_total}}</span></li>
                                             {% endfor %}
                                         
                                         </ul>
                                         <ul class="sub-total">
-                                            <li>Subtotal <span class="count">$380.10</span></li>
-                                            <li>Shipping & Handling <span class="count">${{handing}}</span></li>
+                                            <li>Subtotal <span class="count">₹{{total_price}}</span></li>
+                                            <li>Shipping & Handling <span class="count">₹{{handing}}</span></li>
                                             <li>
 
                                             </li>
                                         </ul>
                                         <ul class="total">
-                                            <li>Total <span class="count">${{order_total}}</span></li>
+                                            <li>Total <span class="count">₹{{order_total}}</span></li>
                                         </ul>
                                     </div>
                                     <div class="payment-box">
@@ -162,27 +164,17 @@
                                                 <ul>
                                                     <li>
                                                         <div class="radio-option">
-                                                            <input type="radio" name="payment-group" id="payment-1"
-                                                                checked="checked">
-                                                            <label for="payment-1">Check Payments<span
+                                                            <input type="radio" name="payment-group" id="payment-1" checked="checked">
+                                                            <label for="payment-1">Cash On Delivery<span
                                                                     class="small-text">Please send a check to Store
                                                                     Name, Store Street, Store Town, Store State /
                                                                     County, Store Postcode.</span></label>
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <div class="radio-option">
-                                                            <input type="radio" name="payment-group" id="payment-2">
-                                                            <label for="payment-2">Cash On Delivery<span
-                                                                    class="small-text">Please send a check to Store
-                                                                    Name, Store Street, Store Town, Store State /
-                                                                    County, Store Postcode.</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="radio-option paypal">
-                                                            <input type="radio" name="payment-group" id="payment-3">
-                                                            <label for="payment-3">PayPal<span class="image"><img
+                                                        <div class="radio-option Phone Pay">
+                                                            <input type="radio" name="payment-group" id="payment-2" disabled>
+                                                            <label for="payment-2">Phone Pay<span class="image"><img
                                                                         src="../assets/images/paypal.png"
                                                                         alt=""></span></label>
                                                         </div>
