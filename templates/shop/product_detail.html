@@ -1,0 +1,1047 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="multikart">
+    <meta name="keywords" content="multikart">
+    <meta name="author" content="multikart">
+    <link rel="icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <title>Multikart - Multi-purpose E-commerce Html Template</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/font-awesome.css' %}">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick-theme.css' %}">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/animate.css' %}">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/themify-icons.css' %}">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/bootstrap.css' %}">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body class="theme-color-1">
+
+    <!-- loader start -->
+    <div class="loader_skeleton">
+        <header>
+            <div class="top-header d-none d-sm-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="header-contact">
+                                <ul>
+                                    <li>Welcome to Our store Multikart</li>
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-end">
+                            <ul class="header-dropdown">
+                                <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart"
+                                            aria-hidden="true"></i></a>
+                                </li>
+                                <li class="onhover-dropdown mobile-account">
+                                    <i class="fa fa-user" aria-hidden="true"></i> My Account
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="main-menu">
+                            <div class="menu-left">
+                                <div class="navbar">
+                                    <a href="javascript:void(0)">
+                                        <div class="bar-style"><i class="fa fa-bars sidebar-bar"
+                                                aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="brand-logo">
+                                    <a href="index.html"><img src="../assets/images/icon/logo.png"
+                                            class="img-fluid blur-up lazyload" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="menu-right pull-right">
+                                <div>
+                                    <nav>
+                                        <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                        <ul class="sm pixelstrap sm-horizontal">
+                                            <li>
+                                                <div class="mobile-back text-end">Back<i class="fa fa-angle-right ps-2"
+                                                        aria-hidden="true"></i></div>
+                                            </li>
+                                            <li>
+                                                <a href="index.html">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">feature<div class="lable-nav">new</div></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">shop</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">product</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">pages</a>
+                                            </li>
+                                            <li><a href="#">blog</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div>
+                                    <div class="icon-nav d-none d-sm-block">
+                                        <ul>
+                                            <li class="onhover-div mobile-search">
+                                                <div><img src="../assets/images/icon/search.png" onclick="openSearch()"
+                                                        class="img-fluid blur-up lazyload" alt=""> <i class="ti-search"
+                                                        onclick="openSearch()"></i></div>
+                                            </li>
+                                            <li class="onhover-div mobile-setting">
+                                                <div><img src="../assets/images/icon/setting.png"
+                                                        class="img-fluid blur-up lazyload" alt=""> <i
+                                                        class="ti-settings"></i></div>
+                                            </li>
+                                            <li class="onhover-div mobile-cart">
+                                                <div><img src="../assets/images/icon/cart.png"
+                                                        class="img-fluid blur-up lazyload" alt=""> <i
+                                                        class="ti-shopping-cart"></i></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="breadcrumb-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="page-title">
+                            <h2>product</h2>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">product</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="section-b-space ratio_asos">
+            <div class="collection-wrapper product-page">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="main-product lg-img"></div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="sm-product"></div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="sm-product"></div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="sm-product"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="product-right">
+                                            <h2></h2>
+                                            <h4></h4>
+                                            <h3></h3>
+                                            <ul>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+                                            <div class="btn-group">
+                                                <div class="btn-ldr"></div>
+                                                <div class="btn-ldr"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <section class="tab-product m-0">
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-12">
+                                        <ul>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                        <p></p>
+                                        <p></p>
+                                        <p></p>
+                                        <p></p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- loader end -->
+
+
+    <!-- header start -->
+    {% include "header.html" %}
+    <!-- header end -->
+
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>product</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">product</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!-- section start -->
+    <section>
+        <div class="collection-wrapper">
+            <div class="container">
+				{% include "includes/alerts.html" %}
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="product-slick">
+                            <div><img src="{{ single_product.image.url }}" alt=""
+                                    class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            {% for i in product_gallery %}
+                                <div><img src="{{ i.image.url }}" alt="" 
+                                    class="img-fluid blur-up lazyload image_zoom_cls-{{ forloop.counter1 }}"></div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 p-0">
+                                <div class="slider-nav">
+                                    <div><img src="{{ single_product.image.url }}" alt=""
+                                            class="img-fluid blur-up lazyload"></div>
+
+                                    {% for i in product_gallery %}
+                                    <div><img src="{{ i.image.url }}" alt="" 
+                                        class="img-fluid blur-up lazyload"></div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 rtl-text">
+                        <div class="product-right">
+                            {% comment %} <div class="product-count">
+                                <ul>
+                                    <li>
+                                        <img src="../assets/images/fire.gif" class="img-fluid" alt="image">
+                                        <span class="p-counter">37</span>
+                                        <span class="lang">orders in last 24 hours</span>
+                                    </li>
+                                    <li>
+                                        <img src="../assets/images/person.gif" class="img-fluid user_img" alt="image">
+                                        <span class="p-counter">44</span>
+                                        <span class="lang">active view this</span>
+                                    </li>
+                                </ul>
+                            </div> {% endcomment %}
+                            <h2>{{single_product.name}}</h2>
+                            <div class="rating-section">
+                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                </div>
+                                <h6>{{single_product.countReview}} ratings</h6>
+                            </div>
+                            <form id="add-to-cart-form" action="{% url 'cart:add_cart' single_product.id %}" method="POST">
+                                {% csrf_token %}
+                                <div class="label-section">
+                                    <span class="badge badge-grey-color">#1 Best seller</span>
+                                    <span class="label-text">in fashion</span>
+                                </div>
+                                <h3 class="price-detail">₹{{single_product.selling_price}} <del>₹{{single_product.price}}</del><span>{{single_product.discount}}% off</span></h3>
+                                <ul class="color-variant">
+                                    <li class="bg-light0 active"></li>
+                                    <li class="bg-light1"></li>
+                                    <li class="bg-light2"></li>
+                                </ul>
+                                <div id="selectSize" class="addeffect-section product-description border-product">
+                                    {% if single_product.variation_set.sizes %}
+                                    <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal" data-bs-target="#sizemodal">size chart</a></span></h6>
+                                    <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <div class="modal-body"><img src="../assets/images/size-chart.jpg" alt="" class="img-fluid blur-up lazyload"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6 class="error-message" style="display: none;">please select size</h6>
+                                    
+                                    <div class="size-box">
+                                        <ul>
+                                            {% for x in single_product.variation_set.sizes%}
+                                            <li><a href="javascript:void(0)">{{x.variation_value | capfirst}}</a></li>
+                                            {% endfor %}
+                                            {% comment %} <li><a href="javascript:void(0)">m</a></li>
+                                            <li><a href="javascript:void(0)">l</a></li>
+                                            <li><a href="javascript:void(0)">xl</a></li> {% endcomment %}
+                                        </ul>
+                                    </div>
+                                    {% endif %}
+                                    <h6 class="product-title">quantity</h6>
+                                    <div class="qty-box">
+                                        <div class="input-group"><span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
+                                            <input type="text" name="quantity" class="form-control input-number" value="1">
+                                            <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-buttons">
+                                    <button type="button" id="cartEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to cart</button>
+                                    <a href="#" class="btn btn-solid"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a>
+                                </div>
+                            </form>
+                            
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    document.getElementById("cartEffect").addEventListener("click", function () {
+                                        // Check if sizes are available
+                                        if (!$(".size-box ul li").length) {
+                                            // No sizes available, submit the form
+                                            $("#add-to-cart-form").submit();
+                                        } else {
+                                            // Sizes are available, check if a size is selected
+                                            if (!$(".size-box ul").hasClass("selected")) {
+                                                // Show error message if size is not selected
+                                                $(".error-message").show();
+                                            } else {
+                                                // Hide error message if size is selected and submit the form
+                                                $(".error-message").hide();
+                                                $("#add-to-cart-form").submit();
+                                            }
+                                        }
+                                    });
+                            
+                                    $(".size-box ul li").on("click", function (e) {
+                                        $(".size-box ul li").removeClass("active");
+                                        $("#selectSize").removeClass("cartMove");
+                                        $(this).addClass("active");
+                                        $(this).parent().addClass("selected");
+                                    });
+                                });
+                            </script>
+                            
+                            
+                            <div class="product-count">
+                                <ul>
+                                    <li>
+                                        <img src="{% static 'images/icon/truck.png' %}" class="img-fluid" alt="image">
+                                        <span class="lang">Free shipping for orders above ₹ 500 </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="border-product">
+                               
+                            </div>
+                            <div class="border-product">
+                                <h6 class="product-title">shipping info</h6>
+                                <ul class="shipping-info">
+                                    <li>100% Original Products</li>
+                                    <li>Free Delivery on order above Rs. 799</li>
+                                    <li>Pay on delivery is available</li>
+                                    <li>Easy 30 days returns and exchanges</li>
+                                </ul>
+                            </div>
+                            <div class="border-product">
+                                <h6 class="product-title">share it</h6>
+                                <div class="product-icon">
+                                    <ul class="product-social">
+                                        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="border-product">
+                                <h6 class="product-title">100% secure payment</h6>
+                                <img src="{% static 'images/payment.png' %}" class="img-fluid mt-1" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section ends -->
+
+
+    <!-- product-tab starts -->
+    <section class="tab-product m-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab"
+                                href="#top-home" role="tab" aria-selected="true"><i
+                                    class="icofont icofont-ui-home"></i>Details</a>
+                            <div class="material-border"></div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab"
+                                href="#top-profile" role="tab" aria-selected="false"><i
+                                    class="icofont icofont-man-in-glasses"></i>Specification</a>
+                            <div class="material-border"></div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" id="review-top-tab" data-bs-toggle="tab"
+                                href="#top-review" role="tab" aria-selected="false"><i
+                                    class="icofont icofont-contacts"></i>Write Review</a>
+                            <div class="material-border"></div>
+                        </li>
+                    </ul>
+                    <div class="tab-content nav-material" id="top-tabContent">
+                        <div class="tab-pane fade show active" id="top-home" role="tabpanel"
+                            aria-labelledby="top-home-tab">
+                            <div class="product-tab-discription">
+                                <div class="part">
+                                    <p>The Model is wearing a white blouse from our stylist's collection, see the image
+                                        for a mock-up of what the actual blouse would look like.it has text written on
+                                        it in a black cursive language which looks great on a white color.</p>
+                                </div>
+                                <div class="part">
+                                    <h5 class="inner-title">fabric:</h5>
+                                    <p>Art silk is manufactured by synthetic fibres like rayon. It's light in weight and
+                                        is soft on the skin for comfort in summers.Art silk is manufactured by synthetic
+                                        fibres like rayon. It's light in weight and is soft on the skin for comfort in
+                                        summers.</p>
+                                </div>
+                                <div class="part">
+                                    <h5 class="inner-title">size & fit:</h5>
+                                    <p>The model (height 5'8") is wearing a size S</p>
+                                </div>
+                                <div class="part">
+                                    <h5 class="inner-title">Material & Care:</h5>
+                                    <p>Top fabric: pure cotton</p>
+                                    <p>Bottom fabric: pure cotton</p>
+                                    <p>Hand-wash</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+                            <p>The Model is wearing a white blouse from our stylist's collection, see the image for a
+                                mock-up of what the actual blouse would look like.it has text written on it in a black
+                                cursive language which looks great on a white color.</p>
+                            <div class="single-product-tables">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sleeve Length</td>
+                                            <td>Sleevless</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Neck</td>
+                                            <td>Round Neck</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Occasion</td>
+                                            <td>Sports</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Fabric</td>
+                                            <td>Polyester</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fit</td>
+                                            <td>Regular Fit</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                            <form class="theme-form">
+                                <div class="form-row row">
+                                    <div class="col-md-12">
+                                        <div class="media">
+                                            <label>Rating</label>
+                                            <div class="media-body ms-3">
+                                                <div class="rating three-star"><i class="fa fa-star"></i> <i
+                                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                        class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Your name"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" placeholder="Email" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="review">Review Title</label>
+                                        <input type="text" class="form-control" id="review"
+                                            placeholder="Enter your Review Subjects" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="review">Review Title</label>
+                                        <textarea class="form-control" placeholder="Wrire Your Testimonial Here"
+                                            id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-solid" type="submit">Submit YOur
+                                            Review</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product-tab ends -->
+
+
+    <!-- product section start -->
+    <section class="section-b-space ratio_asos">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 product-related">
+                    <h2>related products</h2>
+                </div>
+            </div>
+            <div class="row search-product">
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/33.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/34.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
+                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
+                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
+                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
+                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>₹500.00</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/1.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/2.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
+                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
+                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
+                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
+                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>₹500.00</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/27.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/28.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
+                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
+                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
+                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
+                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>₹500.00</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/35.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/36.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
+                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
+                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
+                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
+                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>₹500.00</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/2.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/1.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
+                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
+                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
+                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
+                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>₹500.00</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/28.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/27.jpg"
+                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
+                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
+                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
+                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
+                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>₹500.00</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product section end -->
+
+
+    <!-- footer -->
+    {% include "components/footer.html" %}
+    <!-- footer end -->
+
+
+
+
+
+
+    <!-- Add to cart modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal cart-modal" id="addtocart" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body modal1">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="modal-bg addtocart">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="media">
+                                        <a href="#">
+                                            <img class="img-fluid blur-up lazyload pro-img"
+                                                src="../assets/images/fashion/product/43.jpg" alt="">
+                                        </a>
+                                        <div class="media-body align-self-center text-center">
+                                            <a href="#">
+                                                <h6>
+                                                    <i class="fa fa-check"></i>Item
+                                                    <span>men full sleeves</span>
+                                                    <span> successfully added to your Cart</span>
+                                                </h6>
+                                            </a>
+                                            <div class="buttons">
+                                                <a href="#" class="view-cart btn btn-solid">Your cart</a>
+                                                <a href="#" class="checkout btn btn-solid">Check out</a>
+                                                <a href="#" class="continue btn btn-solid">Continue shopping</a>
+                                            </div>
+
+                                            <div class="upsell_payment">
+                                                <img src="../assets/images/payment_cart.png"
+                                                    class="img-fluid blur-up lazyload" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-section">
+                                        <div class="col-12 product-upsell text-center">
+                                            <h4>Customers who bought this item also.</h4>
+                                        </div>
+                                        <div class="row" id="upsell_product">
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/1.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>₹25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/34.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>₹25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/13.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>₹25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/19.jpg"
+                                                                class="img-fluid blur-up lazyload mb-1"
+                                                                alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>cotton top</span></a></h6>
+                                                        <h4><span>₹25</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add to cart modal popup end-->
+
+
+    <!-- sticky cart bottom start -->
+    <div class="sticky-bottom-cart d-sm-block d-none">
+        <div class="container">
+            <div class="cart-content">
+                <div class="product-image">
+                    <img src="../assets/images/pro3/1.jpg" class="img-fluid" alt="">
+                    <div class="content d-lg-block d-none">
+                        <h5 class="text-uppercase">{{single_product.name}}</h5>
+                        <h6>₹32.96<del>₹459.00</del><span>55% off</span></h6>
+                    </div>
+                </div>
+                <div class="selection-section">
+                    <div class="form-group mb-0">
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose color...</option>
+                            <option>pink</option>
+                            <option>blue</option>
+                            <option>grey</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose size...</option>
+                            <option>small</option>
+                            <option>medium</option>
+                            <option>large</option>
+                            <option>extra large</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="add-btn">
+                    <a data-bs-toggle="modal" data-bs-target="#addtocart" href="" class="btn btn-solid btn-sm">add to
+                        cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sticky cart bottom end -->
+
+
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
+
+
+    <!-- added to cart notification -->
+    <div class="added-notification">
+        <img src="../assets/images/fashion/pro/1.jpg" class="img-fluid" alt="">
+        <h3>added to cart</h3>
+    </div>
+    <!-- added to cart notification -->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("add-to-cart-btn").addEventListener("click", function () {
+                document.getElementById("add-to-cart-form").submit();
+            });
+        });
+    </script>
+
+
+
+
+   <!-- latest jquery-->
+   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+   <!-- fly cart ui jquery-->
+   <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+   
+   <!-- exitintent jquery-->
+   <script src="{% static 'js/jquery.exitintent.js' %}"></script>
+   <script src="{% static 'js/exit.js' %}"></script>
+   
+   <!-- slick js-->
+   <script src="{% static 'js/slick.js' %}"></script>
+   
+   <!-- menu js-->
+   <script src="{% static 'js/menu.js' %}"></script>
+   
+   <!-- lazyload js-->
+   <script src="{% static 'js/lazysizes.min.js' %}"></script>
+   
+   <!-- Bootstrap js-->
+   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   
+   <!-- Bootstrap Notification js-->
+   <script src="{% static 'js/bootstrap-notify.min.js' %}"></script>
+   
+   <!-- Fly cart js-->
+   <script src="{% static 'js/fly-cart.js' %}"></script>
+   
+   <!-- Theme js-->
+   <script src="{% static 'js/theme-setting.js' %}"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+   
+   <script>
+       $(window).on('load', function () {
+           setTimeout(function () {
+               $('#exampleModal').modal('show');
+           }, 2500);
+       });
+   
+       function openSearch() {
+           document.getElementById("search-overlay").style.display = "block";
+       }
+   
+       function closeSearch() {
+           document.getElementById("search-overlay").style.display = "none";
+       }
+   </script>
+   
+   </body>
+   
+   </html>

@@ -1,0 +1,177 @@
+{% load static %}
+<!-- header start -->
+    <header>
+        <div class="mobile-fix-option"></div>
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header-contact">
+                            <ul>
+                                <li>Welcome to Our store Fuku Clothing</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-end">
+                        <ul class="header-dropdown">
+                            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+                                My Account
+                                <ul class="onhover-show-div">
+                                    {% if user.is_authenticated %}
+                                    <li><a href="{% url 'accounts:dashboard' %}">Dashboard</a> </li>
+                                    <li><a href="{% url 'accounts:logout' %}">Log Out</a> </li>
+                                    {% else %}
+                                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                                    <li><a href="{% url 'accounts:register' %}">register</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="main-menu">
+                        <div class="menu-left">
+
+                            <div class="brand-logo">
+                                <a href="{% url 'shop:home' %}"><img src="{% static 'images/icon/FUKU.png' %}"
+                                        class="img-fluid blur-up lazyload" alt="" style="height:40px"></a>
+                            </div>
+                        </div>
+                        <div class="menu-right pull-right">
+                            <div>
+                                <nav id="main-nav">
+                                    <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                    <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                        <li>
+                                            <div class="mobile-back text-end">Back<i class="fa fa-angle-right ps-2"
+                                                    aria-hidden="true"></i></div>
+                                        </li>
+
+                                        <li>
+                                            <a href="{% url 'shop:shop' %}">Shop <div class="lable-nav">new</div></a>
+                                            <ul>
+                                                <li><a href="#">Anime <span class="new-tag">new</span></a></li>
+                                                <li><a href="#">Supehero <span class="new-tag">new</span></a></li>
+                                                <li> <a href="#">Gaming</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">T-shirts <div class="lable-nav">new</div></a>
+                                            <ul>
+                                                <li><a href="{% url 'shop:shop' %}">All</a></li>
+                                                {% for category in categories %}
+                                                <li><a href="{{ category.get_category_slug_url }}">{{category.name}} <span class="new-tag">new</span></a> </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Information</a>
+                                            <ul>
+                                                <li><a href="{% url 'app:about' %}">About Us</a></li>
+                                                <li><a href="#">Design vote or Feedback</a></li>
+                                                <li> <a href="#">Community</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Track order</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div>
+                                <div class="icon-nav">
+                                    <ul>
+                                        <li class="onhover-div mobile-search">
+                                            <div><img src="{% static 'images/icon/search.png' %}" onclick="openSearch()"
+                                                    class="img-fluid blur-up lazyload" alt=""> <i class="ti-search"
+                                                    onclick="openSearch()"></i></div>
+                                            <div id="search-overlay" class="search-overlay">
+                                                <div> <span class="closebtn" onclick="closeSearch()"
+                                                        title="Close Overlay">×</span>
+                                                    <div class="overlay-content">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
+                                                                    <form  action={% url 'shop:search' %} method="GET">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control"
+                                                                                id="exampleInputPassword1" name="keyword"
+                                                                                placeholder="Search a Product......">
+                                                                                <button type="submit" class="btn btn-primary"><i
+                                                                                        class="fa fa-search"></i>Search</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="onhover-div mobile-wishlist"><a href="{% url 'cart:wishlist' %}"><img
+                                            src="{% static 'images/icon/heart-1.png' %}" alt=""></a>
+                                        </li>
+                                        
+                                        <li class="onhover-div mobile-cart">
+                                            <div><a href="{% url 'cart:cart' %}"><img src="{% static 'images/icon/cart.png' %}"
+                                                    class="img-fluid blur-up lazyload" alt=""> </a><i
+                                                    class="ti-shopping-cart"></i></div>
+                                            <span class="cart_qty_cls">2</span>
+                                            <ul class="show-div shopping-cart">
+                                                <li>
+                                                    <div class="media">
+                                                        <a href="#"><img alt="" class="me-3"
+                                                                src="{% static 'images/fashion/product/1.jpg' %}"></a>
+                                                        <div class="media-body">
+                                                            <a href="#">
+                                                                <h4>item name</h4>
+                                                            </a>
+                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
+                                                                aria-hidden="true"></i></a></div>
+                                                </li>
+                                                <li>
+                                                    <div class="media">
+                                                        <a href="#"><img alt="" class="me-3"
+                                                                src="{% static 'images/fashion/product/2.jpg' %}"></a>
+                                                        <div class="media-body">
+                                                            <a href="#">
+                                                                <h4>item name</h4>
+                                                            </a>
+                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
+                                                                aria-hidden="true"></i></a></div>
+                                                </li>
+                                                <li>
+                                                    <div class="total">
+                                                        <h5>subtotal : <span>$299.00</span></h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="buttons"><a href="{% url "cart:cart" %}" class="view-cart">view
+                                                            cart</a> <a href="{% url "orders:checkout" %}" class="checkout">checkout</a></div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header end -->

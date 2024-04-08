@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Variation, ReviewRating, ProductGallery
+from .models import BannerContent, Category, Product, Variation, ReviewRating, ProductGallery
 import admin_thumbnails
 
 @admin_thumbnails.thumbnail('image')
@@ -16,10 +16,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price','new', 'discount', 'stock', 'created', 'updated', 'is_available']
+    list_display = ['name', 'price','selling_price','new', 'discount', 'stock', 'created', 'updated', 'is_available']
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ['is_available', 'category', 'new']
-    list_editable = ['price','discount', 'is_available', 'stock', 'new']
+    list_editable = ['price','selling_price', 'discount', 'is_available', 'stock', 'new']
     readonly_fields = ['created', 'updated', ]
     inlines = [ProductGalleryInline]
 
@@ -31,8 +31,9 @@ class VariationAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ReviewRating)
-
+admin.site.register(BannerContent)
 
 @admin.register(ProductGallery)
 class ProductGalleryAdmin(admin.ModelAdmin):
     list_filter = ['product']
+    

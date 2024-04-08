@@ -163,6 +163,41 @@ def cart(request, total_price=0, quantity=0, cart_items=None):
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
+            total_price += (cart_item.product.selling_price * cart_item.quantity)
+            quantity += cart_item.quantity
+    
+    except ObjectDoesNotExist:
+        pass
+    
+    
+    tax = round(((2 * total_price)/100), 2)
+    grand_total = total_price + tax
+    handing = 15.00
+    total = float(grand_total) + handing
+
+    context = {
+        'total' : total_price,
+        'quantity': quantity,
+        'cart_items':cart_items,
+        'order_total':total,
+        'vat' : tax,
+        'handing':handing,
+    }
+
+    return render(request, 'shop/cart.html', context)
+
+
+def wishlist(request, total_price=0, quantity=0, cart_items=None):
+    grand_total = 0
+    tax = 0
+
+    try:
+        if request.user.is_authenticated:
+            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        for cart_item in cart_items:
             total_price += (cart_item.product.price * cart_item.quantity)
             quantity += cart_item.quantity
     
@@ -184,5 +219,5 @@ def cart(request, total_price=0, quantity=0, cart_items=None):
         'handing':handing,
     }
 
-    return render(request, 'shop/cart/cart.html', context)
+    return render(request, 'shop/wishlist.html', context)
 

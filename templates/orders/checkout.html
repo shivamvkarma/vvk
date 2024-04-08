@@ -1,0 +1,267 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="multikart">
+    <meta name="keywords" content="multikart">
+    <meta name="author" content="multikart">
+    <link rel="icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <title>Multikart - Multi-purpose E-commerce Html Template</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/font-awesome.css' %}">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick-theme.css' %}">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/animate.css' %}">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/themify-icons.css' %}">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/bootstrap.css' %}">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body class="theme-color-1">
+
+
+    <!-- header start -->
+    {% include "header.html" %}
+
+    <!-- header end -->
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>Check-out</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Check-out</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+    
+
+
+    <!-- section start -->
+    <section class="section-b-space">
+
+        {% include "includes/alerts.html" %}
+        
+        <div class="container">
+            <div class="checkout-page">
+                <div class="checkout-form">
+                    <form action="{% url 'orders:payment' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12 col-xs-12">
+                                <div class="checkout-title">
+                                    <h3>Billing Details</h3>
+                                </div>
+                                <div class="row check-out">
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">First Name</div>
+                                        <input type="text" name="first_name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Last Name</div>
+                                        <input type="text" name="last_name" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Phone</div>
+                                        <input type="text" name="phone" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <div class="field-label">Email Address</div>
+                                        <input type="text" name="email" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Country</div>
+                                        <select name="country">
+                                            <option value="india" >India</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Address</div>
+                                        <input type="text" name="address" value="" placeholder="Street address">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Town/City</div>
+                                        <input type="text" name="city" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                        <div class="field-label">State</div>
+                                        <input type="text" name="state" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                        <div class="field-label">Postal Code</div>
+                                        <input type="text" name="postal_code" value="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                        <div class="field-label">Order Notes</div>
+                                        <input type="text" name="order_note" value="" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12 col-xs-12">
+                                <div class="checkout-details">
+                                    <div class="order-box">
+                                        <div class="title-box">
+                                            <div>Product <span>Total</span></div>
+                                        </div>
+                                        <ul class="qty">
+                                            {% for cart_item in cart_items %}
+                                                <li>{{cart_item.product.name}} × {{cart_item.quantity}} <span>₹{{cart_item.sub_total}}</span></li>
+                                            {% endfor %}
+                                        
+                                        </ul>
+                                        <ul class="sub-total">
+                                            <li>Subtotal <span class="count">₹{{total_price}}</span></li>
+                                            <li>Shipping & Handling <span class="count">₹{{handing}}</span></li>
+                                            <li>
+
+                                            </li>
+                                        </ul>
+                                        <ul class="total">
+                                            <li>Total <span class="count">₹{{order_total}}</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="payment-box">
+                                        <div class="upper-box">
+                                            <div class="payment-options">
+                                                <ul>
+                                                    <li>
+                                                        <div class="radio-option">
+                                                            <input type="radio" name="payment-group" id="payment-1" checked="checked">
+                                                            <label for="payment-1">Cash On Delivery<span
+                                                                    class="small-text">Please send a check to Store
+                                                                    Name, Store Street, Store Town, Store State /
+                                                                    County, Store Postcode.</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="radio-option Phone Pay">
+                                                            <input type="radio" name="payment-group" id="payment-2" disabled>
+                                                            <label for="payment-2">Phone Pay<span class="image"><img
+                                                                        src="../assets/images/paypal.png"
+                                                                        alt=""></span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {% comment %} <div  style="width:100%" class="submit-text">
+                                            <button href="#" class="btn btn-warning" style="background:#f4cca4;color:#1c1427; width:100% ; text-transform: capitalize;font-size:18px"><b>Place Order</b></button>
+                                            </div> {% endcomment %}
+                                        <div class="text-end"><button href="#" class="btn-solid btn">Place Order</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end -->
+
+
+    <!-- footer -->
+    {% include "components/footer.html" %}
+    <!-- footer end -->
+
+
+
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
+
+
+
+
+   <!-- latest jquery-->
+   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+   <!-- fly cart ui jquery-->
+   <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+   
+   <!-- exitintent jquery-->
+   <script src="{% static 'js/jquery.exitintent.js' %}"></script>
+   <script src="{% static 'js/exit.js' %}"></script>
+   
+   <!-- slick js-->
+   <script src="{% static 'js/slick.js' %}"></script>
+   
+   <!-- menu js-->
+   <script src="{% static 'js/menu.js' %}"></script>
+   
+   <!-- lazyload js-->
+   <script src="{% static 'js/lazysizes.min.js' %}"></script>
+   
+   <!-- Bootstrap js-->
+   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   
+   <!-- Bootstrap Notification js-->
+   <script src="{% static 'js/bootstrap-notify.min.js' %}"></script>
+   
+   <!-- Fly cart js-->
+   <script src="{% static 'js/fly-cart.js' %}"></script>
+   
+   <!-- Theme js-->
+   <script src="{% static 'js/theme-setting.js' %}"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+   
+   <script>
+       $(window).on('load', function () {
+           setTimeout(function () {
+               $('#exampleModal').modal('show');
+           }, 2500);
+       });
+   
+       function openSearch() {
+           document.getElementById("search-overlay").style.display = "block";
+       }
+   
+       function closeSearch() {
+           document.getElementById("search-overlay").style.display = "none";
+       }
+   </script>
+   
+   </body>
+   
+   </html>
+   

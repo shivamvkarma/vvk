@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
-from .models import Product, Category
+from .models import BannerContent, Product, Category
 from cart.views import _cart_id
 from cart.models import CartItem
 from .models import ReviewRating
@@ -10,11 +10,19 @@ from .forms import ReviewForm
 from django.contrib import messages
 from orders.models import OrderProduct
 from .models import ProductGallery
+from app.models import InstagramImage
 
 def home(request):
+    banner_contents = BannerContent.objects.all()
+    instagram_images = InstagramImage.objects.all()
     products = Product.objects.all().filter(is_available=True)
+    categories = Category.objects.all()
+
     context = {
         'products' : products,
+        'categories': categories,
+        'banner_contents': banner_contents,
+        'instagram_images': instagram_images,
     }
     return render(request, 'coming_soon.html', context)
 
@@ -44,18 +52,20 @@ def shop(request, category_slug=None):
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
         products_count = products.count()
+
+            
         
     
     for product in products:
         reviews = ReviewRating.objects.order_by('-updated_at').filter(product_id=product.id, status=True)
-
+    
     context = {
         'category_slug': category_slug,
         'products' : paged_products,
         'products_count': products_count,
         
     }
-    return render(request, 'shop/shop/shop.html', context)
+    return render(request, 'shop/shop.html', context)
 
 
 def product_details(request, category_slug, product_details_slug):
@@ -84,10 +94,11 @@ def product_details(request, category_slug, product_details_slug):
         'reviews': reviews,
         'product_gallery':product_gallery,
     }
-    return render(request, 'shop/shop/product_details.html', context)
+    return render(request, 'shop/product_detail.html', context)
 
 
 def search(request):
+    print("IN SERARCH ")
     products_count = 0
     products = None
     paged_products = None
@@ -103,7 +114,7 @@ def search(request):
         'products': products,
         'products_count': products_count,
     }
-    return render(request, 'shop/shop/search.html', context)
+    return render(request, 'shop/search.html', context)
 
 
 
@@ -128,3 +139,4 @@ def review(request, product_id):
                 data.save()
                 messages.success(request, 'Thank you, your review Posted!')
                 return redirect(url)
+
