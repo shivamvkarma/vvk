@@ -17,19 +17,14 @@ def home(request):
     instagram_images = InstagramImage.objects.all()
     products = Product.objects.all().filter(is_available=True)
     categories = Category.objects.all()
-
+    
     context = {
         'products' : products,
         'categories': categories,
         'banner_contents': banner_contents,
         'instagram_images': instagram_images,
     }
-    return render(request, 'coming_soon.html', context)
-
-from django.shortcuts import render
-
-def error_404_view(request, exception):
-    return render(request, '404.html', status=404)
+    return render(request, 'index.html', context)
 
 
 
