@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fuku Clothings">
+    <meta name="keywords" content="Fuku Clothings">
+    <meta name="author" content="Fuku Clothings">
+    <link rel="icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <title>Fuku clothings</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/font-awesome.css' %}">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick-theme.css' %}">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/animate.css' %}">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/themify-icons.css' %}">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/bootstrap.css' %}">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+
+<body class="theme-color-1">
+
+
+    <!-- header start -->
+    {% include "header.html" %}
+    <!-- header end -->
+
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>contact</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active">contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!--section start-->
+    <section class="contact-page section-b-space">
+        <div class="container">
+            <div class="row section-b-space">
+                <div class="col-lg-7 map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1605.811957341231!2d25.45976406005396!3d36.3940974010114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1550912388321"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="col-lg-5">
+                    <div class="contact-right">
+                        <ul>
+                            <li>
+                                <div class="contact-icon"><img src="../assets/images/icon/phone.png"
+                                        alt="Generic placeholder image">
+                                    <h6>Contact Us</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>+91 123 - 456 - 7890</p>
+                                    <p>+86 163 - 451 - 7894</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <h6>Address</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>ABC Complex,Near xyz, New York</p>
+                                    <p>USA 123456</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><img src="../assets/images/icon/email.png"
+                                        alt="Generic placeholder image">
+                                    <h6>Address</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>Support@Shopcart.com</p>
+                                    <p>info@shopcart.com</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa fa-fax" aria-hidden="true"></i>
+                                    <h6>Fax</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>Support@Shopcart.com</p>
+                                    <p>info@shopcart.com</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <form class="theme-form">
+                        <div class="form-row row">
+                            <div class="col-md-6">
+                                <label for="name">First Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter Your name"
+                                    required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">Last Name</label>
+                                <input type="text" class="form-control" id="last-name" placeholder="Email" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Phone number</label>
+                                <input type="text" class="form-control" id="review" placeholder="Enter your number"
+                                    required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" placeholder="Email" required="">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="review">Write Your Message</label>
+                                <textarea class="form-control" placeholder="Write Your Message"
+                                    id="exampleFormControlTextarea1" rows="6"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-solid" type="submit">Send Your Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Section ends-->
+
+
+
+    <!-- footer -->
+    {% include "components/footer.html" %}
+    <!-- footer end -->
+
+
+    <!-- theme setting -->
+    <div class="theme-settings">
+        <ul>
+            <li>
+                <div class="dark-btn">Dark</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- theme setting -->
+
+
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
+
+  <!-- latest jquery-->
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+  <!-- fly cart ui jquery-->
+  <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+  
+  <!-- exitintent jquery-->
+  <script src="{% static 'js/jquery.exitintent.js' %}"></script>
+  <script src="{% static 'js/exit.js' %}"></script>
+  
+  <!-- slick js-->
+  <script src="{% static 'js/slick.js' %}"></script>
+  
+  <!-- menu js-->
+  <script src="{% static 'js/menu.js' %}"></script>
+  
+  <!-- lazyload js-->
+  <script src="{% static 'js/lazysizes.min.js' %}"></script>
+  
+  <!-- Bootstrap js-->
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  
+  <!-- Bootstrap Notification js-->
+  <script src="{% static 'js/bootstrap-notify.min.js' %}"></script>
+  
+  <!-- Fly cart js-->
+  <script src="{% static 'js/fly-cart.js' %}"></script>
+  
+  <!-- Theme js-->
+  <script src="{% static 'js/theme-setting.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  
+  <script>
+  
+      $(window).on('load', function () {
+          setTimeout(function () {
+              $('#exampleModal').modal('show');
+          }, 2500);
+      });
+  
+      function openSearch() {
+          document.getElementById("search-overlay").style.display = "block";
+      }
+  
+      function closeSearch() {
+          document.getElementById("search-overlay").style.display = "none";
+      }
+  </script>
+  
+  </body>
+  
+  </html>
+  

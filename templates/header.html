@@ -77,7 +77,7 @@
                                             <ul>
                                                 <li><a href="{% url 'app:about' %}">About Us</a></li>
                                                 <li><a href="#">Design vote or Feedback</a></li>
-                                                <li> <a href="#">Community</a></li>
+                                                <li> <a href="https://www.linkedin.com/company/fuku-company/" target="_blank">Community</a></li>
 
                                             </ul>
                                         </li>
@@ -116,8 +116,11 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="onhover-div mobile-wishlist"><a href="{% url 'cart:wishlist' %}"><img
+                                        {% comment %} <li class="onhover-div mobile-wishlist"><a href="{% url 'cart:wishlist' %}"><img
                                             src="{% static 'images/icon/heart-1.png' %}" alt=""></a>
+                                        </li> {% endcomment %}
+                                        <li class="onhover-div mobile-setting"><a href="{% url 'cart:wishlist' %}"><img 
+                                            src="{% static 'images/icon/heart-1.png' %}" alt=""> </a>
                                         </li>
                                         
                                         <li class="onhover-div mobile-cart">
@@ -126,37 +129,27 @@
                                                     class="ti-shopping-cart"></i></div>
                                             <span class="cart_qty_cls">2</span>
                                             <ul class="show-div shopping-cart">
+                                                {% for x in cart_itemsss %}
                                                 <li>
                                                     <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="{% static 'images/fashion/product/1.jpg' %}"></a>
+                                                        <a href="{{x.product.get_prodcut_details_url}}"><img alt="" class="me-3"
+                                                                src="{{x.product.image.url}}"></a>
                                                         <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
+                                                            <a href="{{x.product.get_prodcut_details_url}}">
+                                                                <h4>{{x.product.name}}</h4>
                                                             </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                            <h4><span>1 x $ {{x.product.price}}</span></h4>
                                                         </div>
                                                     </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
+                                                    <div class="close-circle"><a href="{% url 'cart:remove_cart_item' x.product.id x.id %}"><i class="fa fa-times"
                                                                 aria-hidden="true"></i></a></div>
                                                 </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="{% static 'images/fashion/product/2.jpg' %}"></a>
-                                                        <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a></div>
-                                                </li>
+                                                {% endfor %}
+
+
                                                 <li>
                                                     <div class="total">
-                                                        <h5>subtotal : <span>$299.00</span></h5>
+                                                        <h5>subtotal : <span>${{totalll}}</span></h5>
                                                     </div>
                                                 </li>
                                                 <li>

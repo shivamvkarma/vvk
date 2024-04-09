@@ -1,5 +1,12 @@
-jQuery(document).ready(function($) {
+/*-----------------------------------------------------------------------------------
 
+ Description: This is E-commerce website for the Fuku clothings, created by Satyajit Giram
+ Author: Satyajit Giram
+ Author URI: https://satyajitgiram.com
+
+ ----------------------------------------------------------------------------------- */
+ 
+jQuery(document).ready(function($) {
 
 /*
 |--------------------------------------------------------------------------

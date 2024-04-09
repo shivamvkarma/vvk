@@ -1,10 +1,8 @@
 /*-----------------------------------------------------------------------------------
 
- Template Name:Multikart
- Template URI: themes.pixelstrap.com/multikart
- Description: This is E-commerce website
- Author: Pixelstrap
- Author URI: https://themeforest.net/user/pixelstrap
+ Description: This is E-commerce website for the Fuku clothings, created by Satyajit Giram
+ Author: Satyajit Giram
+ Author URI: https://satyajitgiram.com
 
  ----------------------------------------------------------------------------------- */
 // 01.Pre loader

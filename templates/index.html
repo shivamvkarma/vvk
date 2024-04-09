@@ -6,12 +6,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="multikart">
-        <meta name="keywords" content="multikart">
-        <meta name="author" content="multikart">
+        <meta name="description" content="Fuku Clothings">
+        <meta name="keywords" content="Fuku Clothings">
+        <meta name="author" content="Fuku Clothings">
         <link rel="icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
         <link rel="shortcut icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
-        <title>Multikart - Multi-purpose E-commerce Html Template</title>
+        <title>Fuku clothings</title>
 
         <!--Google font-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -50,7 +50,7 @@
                     <div class="col-lg-6">
                         <div class="header-contact">
                             <ul>
-                                <li>Welcome to Our store Multikart</li>
+                                <li>Welcome to Our Fuku Clothings</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
                             </ul>
                         </div>
@@ -81,8 +81,9 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="../assets/images/icon/logo.png"
-                                            class="img-fluid blur-up lazyload" alt=""></a>
+                                    <a href="index.html"><img src="{% static 'images/icon/FUKU.png' %}"
+                                        class="img-fluid blur-up lazyload" alt="Fuku logo" style="height:40px"></a>
+                                            
                                 </div>
                             </div>
                             <div class="menu-right pull-right">
@@ -101,15 +102,10 @@
                                                 <a href="#">shop</a>
                                             </li>
                                             <li>
-                                                <a href="#">feature<div class="lable-nav">new</div></a>
-                                            </li>
-                                            <li>
                                                 <a href="#">product</a>
                                             </li>
                                             <li>
                                                 <a href="#">pages</a>
-                                            </li>
-                                            <li><a href="#">blog</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -274,7 +270,9 @@
             <div>
                 <div class="home text-center">
                     <img src="{% if request.user_agent.is_mobile %}{{ content.mobile_view_image.url }}{% else %}{{ content.image.url }}{% endif %}" alt="" class="bg-img blur-up lazyload">
-                <div class="container">
+                    <a href="{{ content.button_link }}">
+                    <div class="container">
+                
                         <div class="row">
                             <div class="col">
                                 <div class="slider-contain">
@@ -287,6 +285,7 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             {% endfor %}
@@ -942,44 +941,6 @@
     <!-- cookie bar end -->
 
 
-    <!--modal popup start-->
-    <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body modal1">
-                    <div class="container-fluid p-0">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="modal-bg">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <div class="offer-content"> <img src="../assets/images/Offer-banner.png"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                        <h2>newsletter</h2>
-                                        <form
-                                            action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
-                                            class="auth-form needs-validation" method="post"
-                                            id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                                            target="_blank">
-                                            <div class="form-group mx-sm-3">
-                                                <input type="email" class="form-control" name="EMAIL" id="mce-EMAIL"
-                                                    placeholder="Enter your email" required="required">
-                                                <button type="submit" class="btn btn-solid"
-                                                    id="mc-submit">subscribe</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--modal popup end-->
-
 
     <!-- Quick-view modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog"
@@ -1047,9 +1008,6 @@
         <ul>
             <li>
                 <div class="dark-btn">Dark</div>
-            </li>
-            <li class="input-picker">
-                <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
             </li>
         </ul>
     </div>
