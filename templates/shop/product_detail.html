@@ -319,11 +319,11 @@
                                     <span class="label-text">in fashion</span>
                                 </div>
                                 <h3 class="price-detail">₹{{single_product.selling_price}} <del>₹{{single_product.price}}</del><span>{{single_product.discount}}% off</span></h3>
-                                <ul class="color-variant">
+                                {% comment %} <ul class="color-variant">
                                     <li class="bg-light0 active"></li>
                                     <li class="bg-light1"></li>
                                     <li class="bg-light2"></li>
-                                </ul>
+                                </ul> {% endcomment %}
                                 <div id="selectSize" class="addeffect-section product-description border-product">
                                     {% if single_product.variation_set.sizes %}
                                     <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal" data-bs-target="#sizemodal">size chart</a></span></h6>
@@ -416,18 +416,6 @@
                                 </ul>
                             </div>
                             <div class="border-product">
-                                <h6 class="product-title">share it</h6>
-                                <div class="product-icon">
-                                    <ul class="product-social">
-                                        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="border-product">
                                 <h6 class="product-title">100% secure payment</h6>
                                 <img src="{% static 'images/payment.png' %}" class="img-fluid mt-1" alt="">
                             </div>
@@ -449,11 +437,6 @@
                         <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab"
                                 href="#top-home" role="tab" aria-selected="true"><i
                                     class="icofont icofont-ui-home"></i>Details</a>
-                            <div class="material-border"></div>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab"
-                                href="#top-profile" role="tab" aria-selected="false"><i
-                                    class="icofont icofont-man-in-glasses"></i>Specification</a>
                             <div class="material-border"></div>
                         </li>
                         <li class="nav-item"><a class="nav-link" id="review-top-tab" data-bs-toggle="tab"
@@ -488,41 +471,6 @@
                                     <p>Bottom fabric: pure cotton</p>
                                     <p>Hand-wash</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
-                            <p>The Model is wearing a white blouse from our stylist's collection, see the image for a
-                                mock-up of what the actual blouse would look like.it has text written on it in a black
-                                cursive language which looks great on a white color.</p>
-                            <div class="single-product-tables">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>Sleeve Length</td>
-                                            <td>Sleevless</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Neck</td>
-                                            <td>Round Neck</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Occasion</td>
-                                            <td>Sports</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>Fabric</td>
-                                            <td>Polyester</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fit</td>
-                                            <td>Regular Fit</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
@@ -581,222 +529,57 @@
                 </div>
             </div>
             <div class="row search-product">
+
+                {% for product in related_products|slice:':12' %}
                 <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/33.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/34.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
+                <div class="product-box">
+                    <div class="img-wrapper">
+                        <div class="front">
+                            <a href="{{ product.get_prodcut_details_url }}"><img src="{{ product.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="{{ product.name }}"></a>
                         </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
+                        <!-- Add back image if needed -->
+                        <!-- <div class="back">
+                            <a href="{{ product.get_prodcut_details_url }}"><img src="../assets/images/pro3/28.jpg" class="img-fluid blur-up lazyload bg-img" alt="{{ product.name }}"></a>
+                        </div> -->
+                        <div class="cart-info cart-wrap">
+                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
+                                <i class="ti-shopping-cart"></i>
+                            </button>
+                            <!-- Add to Wishlist, Quick View, Compare links -->
+                            <a href="#" title="Add to Wishlist">
+                                <i class="ti-heart" aria-hidden="true"></i>
                             </a>
-                            <h4>₹500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
+                            <!--  <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
+                                <i class="ti-search" aria-hidden="true"></i>
+                            </a>
+                            <a href="compare.html" title="Compare">
+                                <i class="ti-reload" aria-hidden="true"></i>
+                            </a> -->
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/1.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/2.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
+                    <div class="product-detail">
+                        <!-- Display product rating if available -->
+                        <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                         </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>₹500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
+                        <a href="{{ product.get_prodcut_details_url }}">
+                            <h6>{{ product.name }}</h6>
+                        </a>
+                        <!-- Display discounted price if available -->
+
+                        <h4>₹{{ product.selling_price }} <del>₹{{ product.price }}</del></h4>
+                        <!-- Add color variant if available -->
+                        <ul class="color-variant">
+                            <li class="bg-light0"></li>
+                            <li class="bg-light1"></li>
+                            <li class="bg-light2"></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/27.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/28.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>₹500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/35.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/36.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>₹500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/2.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/1.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>₹500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/28.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/27.jpg"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>Slim Fit Cotton Shirt</h6>
-                            </a>
-                            <h4>₹500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
+
             </div>
         </div>
     </section>

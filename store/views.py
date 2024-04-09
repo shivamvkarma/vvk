@@ -10,10 +10,11 @@ from .forms import ReviewForm
 from django.contrib import messages
 from orders.models import OrderProduct
 from .models import ProductGallery
-from app.models import InstagramImage
+from app.models import InstagramImage, SubBanners
 
 def home(request):
     banner_contents = BannerContent.objects.all()
+    sub_banners = SubBanners.objects.all()
     instagram_images = InstagramImage.objects.all()
     products = Product.objects.all().filter(is_available=True)
     categories = Category.objects.all()
@@ -21,6 +22,7 @@ def home(request):
     context = {
         'products' : products,
         'categories': categories,
+        'sub_banners': sub_banners,
         'banner_contents': banner_contents,
         'instagram_images': instagram_images,
     }
@@ -66,7 +68,7 @@ def shop(request, category_slug=None):
 def product_details(request, category_slug, product_details_slug):
     try:
         single_product = Product.objects.get(category__slug=category_slug, slug=product_details_slug)
-        
+        related_products = Product.objects.filter(category__slug=category_slug)
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product).exists()
     except Exception as e:
         return e
@@ -86,6 +88,7 @@ def product_details(request, category_slug, product_details_slug):
         'single_product': single_product,
         'in_cart': in_cart,
         'orderproduct':orderproduct,
+        'related_products':related_products,
         'reviews': reviews,
         'product_gallery':product_gallery,
     }

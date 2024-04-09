@@ -81,7 +81,7 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="{% static 'images/icon/FUKU.png' %}"
+                                    <a href="/"><img src="{% static 'images/icon/FUKU.png' %}"
                                         class="img-fluid blur-up lazyload" alt="Fuku logo" style="height:40px"></a>
                                             
                                 </div>
@@ -272,14 +272,20 @@
                     <img src="{% if request.user_agent.is_mobile %}{{ content.mobile_view_image.url }}{% else %}{{ content.image.url }}{% endif %}" alt="" class="bg-img blur-up lazyload">
                     <a href="{{ content.button_link }}">
                     <div class="container">
-                
                         <div class="row">
                             <div class="col">
                                 <div class="slider-contain">
                                     <div>
-                                        <h4>{{ content.title }}</h4>
-                                        <h1>{{ content.subtitle }}</h1>
+                                        {% if content.title %}
+                                            <h4>{{ content.title }}</h4>
+                                        {% endif %}
+                                        {% if content.subtitle %}
+                                            <h1>{{ content.subtitle }}</h1>
+                                        {% endif %}
+                                        {% if content.button_text %}
                                         <a href="{{ content.button_link }}" class="btn btn-solid">{{ content.button_text }}</a>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>
@@ -298,39 +304,25 @@
     <section class="pb-0 ratio2_1">
         <div class="container">
             <div class="row partition2">
+                {% for banner in sub_banners %}
                 <div class="col-md-6">
-                    <a href="#">
+                    <a href="{{banner.link}}">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="{% static 'images/sub-banner1.jpg' %}" class="img-fluid blur-up lazyload bg-img"
-                                    alt="">
+                                <img src="{{ banner.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="">
                             </div>
                             <div class="contain-banner">
                                 <div>
-                                    <h4>save 30%</h4>
-                                    <h2>men</h2>
+                                    <h4>{{ banner.discount }}</h4>
+                                    <h2>{{ banner.category }}</h2>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6">
-                    <a href="#">
-                        <div class="collection-banner p-right text-center">
-                            <div class="img-part">
-                                <img src="{% static 'images/sub-banner2.jpg' %}" class="img-fluid blur-up lazyload bg-img"
-                                    alt="">
-                            </div>
-                            <div class="contain-banner">
-                                <div>
-                                    <h4>save 60%</h4>
-                                    <h2>women</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                {% endfor %}
             </div>
+            
         </div>
     </section>
     <!-- collection banner end -->
@@ -345,8 +337,7 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="product-para">
-                    <p class="text-center">Looking for the latest trends in clothing, shoes and accessories? Welcome to
-                        our 'Latest Drops' edit, bringing you all the latest styles from all your fave brands.</p>
+                    <p class="text-center"></p>
                 </div>
             </div>
         </div>
@@ -1016,7 +1007,7 @@
 
 
     <!-- exit modal popup start-->
-    <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog"
+    {% comment %} <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -1049,7 +1040,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     <!-- Add to cart modal popup end-->
 
 

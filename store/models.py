@@ -25,9 +25,9 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    description = models.TextField(max_length=300, blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    selling_price = models.DecimalField(max_digits=6, decimal_places=2)
+    description = models.TextField(blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    selling_price = models.DecimalField(max_digits=8, decimal_places=2)
     discount = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     image = models.ImageField(upload_to='photos/products')
     stock = models.IntegerField()
@@ -125,13 +125,12 @@ class ProductGallery(models.Model):
         return self.product.name
     
 class BannerContent(models.Model):
-    title = models.CharField(max_length=255)
-    subtitle = models.CharField(max_length=255)
-    button_text = models.CharField(max_length=50)
-    button_link = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, null=True, blank=True)
+    subtitle = models.CharField(max_length=255, null=True, blank=True)
+    button_text = models.CharField(max_length=50, null=True, blank=True)
+    button_link = models.CharField(max_length=255, null=True, blank=True)
     image = models.ImageField(upload_to='banner_images/', default='default_image.jpg')
     mobile_view_image = models.ImageField(upload_to='banner_images/', default='default_image.jpg')
 
     def __str__(self):
         return self.title
-    
