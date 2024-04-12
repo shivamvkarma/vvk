@@ -132,5 +132,5 @@ class BannerContent(models.Model):
     image = models.ImageField(upload_to='banner_images/', default='default_image.jpg')
     mobile_view_image = models.ImageField(upload_to='banner_images/', default='default_image.jpg')
 
-    def __str__(self):
-        return self.title
+    # def __str__(self):
+    #     return self.title
