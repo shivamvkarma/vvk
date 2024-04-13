@@ -84,7 +84,7 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="../assets/images/icon/logo.png"
+                                    <a href="/"><img src="../assets/images/icon/logo.png"
                                             class="img-fluid blur-up lazyload" alt=""></a>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                                         aria-hidden="true"></i></div>
                                             </li>
                                             <li>
-                                                <a href="index.html">Home</a>
+                                                <a href="/">Home</a>
                                             </li>
                                             <li>
                                                 <a href="#">feature<div class="lable-nav">new</div></a>
@@ -155,7 +155,7 @@
                     <div class="col-sm-6">
                         <nav aria-label="breadcrumb" class="theme-breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">product</li>
                             </ol>
                         </nav>
@@ -247,7 +247,7 @@
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">product</li>
                         </ol>
                     </nav>
@@ -307,8 +307,13 @@
                             </div> {% endcomment %}
                             <h2>{{single_product.name}}</h2>
                             <div class="rating-section">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <div class="rating">
+                                    <i class="fa fa-star{% if single_product.averageRating < 0.5 %}-o{% elif single_product.averageRating >= 0.5 and single_product.averageRating < 1 %}-half-o {% endif %}" ></i>
+                                    <i class="fa fa-star{% if single_product.averageRating < 1.5 %}-o{% elif single_product.averageRating >= 1.5 and single_product.averageRating < 2 %}-half-o {% endif %}" ></i>
+                                    <i class="fa fa-star{% if single_product.averageRating < 2.5 %}-o{% elif single_product.averageRating >= 2.5 and single_product.averageRating < 3 %}-half-o {% endif %}" ></i>
+                                    <i class="fa fa-star{% if single_product.averageRating < 3.5 %}-o{% elif single_product.averageRating >= 3.5 and single_product.averageRating < 4 %}-half-o {% endif %}" ></i>
+                                    <i class="fa fa-star{% if single_product.averageRating < 4.5 %}-o{% elif single_product.averageRating >= 4.5 and single_product.averageRating < 5 %}-half-o {% endif %}" ></i>
+                                    
                                 </div>
                                 <h6>{{single_product.countReview}} ratings</h6>
                             </div>
@@ -351,13 +356,13 @@
                                         </ul>
                                     </div>
                                     {% endif %}
-                                    <h6 class="product-title">quantity</h6>
+                                    {% comment %} <h6 class="product-title">quantity</h6>
                                     <div class="qty-box">
                                         <div class="input-group"><span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
                                             <input type="text" name="quantity" class="form-control input-number" value="1">
                                             <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span>
                                         </div>
-                                    </div>
+                                    </div> {% endcomment %}
                                 </div>
                                 <div class="product-buttons">
                                     <button type="button" id="cartEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to cart</button>
@@ -751,6 +756,11 @@
     <!-- sticky cart bottom end -->
 
 
+    <!-- theme setting -->
+    {% include "components/dark-mode.html" %}
+    <!-- theme setting -->
+
+    
     <!-- tap to top start -->
     <div class="tap-top">
         <div><i class="fa fa-angle-double-up"></i></div>

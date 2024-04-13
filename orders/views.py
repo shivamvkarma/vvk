@@ -33,7 +33,7 @@ def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
-            total_price += (cart_item.product.price * cart_item.quantity)
+            total_price += (cart_item.product.selling_price * cart_item.quantity)
             quantity += cart_item.quantity
         total = total_price + 10
 
@@ -55,10 +55,25 @@ def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
     return render(request, 'orders/checkout.html', context)
 
 
+import datetime
+
+def generate_transaction_id():
+    now = datetime.datetime.now()
+    
+    # Format the date and time components
+    date_str = now.strftime("%Y%m%d")
+    time_str = now.strftime("%H%M%S")
+    
+    transaction_id = f"COD{date_str}{time_str}"
+    
+    return transaction_id
+
+
+
 @login_required(login_url = 'accounts:login')
 def payment(request, total=0, quantity=0):
     current_user = request.user
-    handing = 15.0
+    handing = 40
     # if the cart cout less than 0 , redirect to shop page 
     cart_items = CartItem.objects.filter(user=current_user)
     cart_count = cart_items.count()
@@ -68,12 +83,12 @@ def payment(request, total=0, quantity=0):
     grand_total = 0
     tax = 0
     for cart_item in cart_items:
-        total += (cart_item.product.price * cart_item.quantity)
+        total += (cart_item.product.selling_price * cart_item.quantity)
         quantity += cart_item.quantity
     tax = round(((2 * total)/100), 2)
 
     grand_total = total + tax
-    handing = 15.00
+    handing = 40
     total = float(grand_total) + handing
     
     if request.method == 'POST':
@@ -113,8 +128,9 @@ def payment(request, total=0, quantity=0):
                 'handing': handing,
                 'vat': tax,
                 'order_total': total,
+                "transaction_id": generate_transaction_id()
             }
-            return render(request, 'shop/orders/checkout/payment.html', context)
+            return render(request, 'orders/payment.html', context)
         else:
             messages.error(request, 'YOur information not Vailed')
             return redirect('orders:checkout')
@@ -126,7 +142,7 @@ def payment(request, total=0, quantity=0):
 def payments(request):
     body = json.loads(request.body)
     order = Order.objects.get(user=request.user, is_ordered=False, order_number=body['orderID'])
-    
+    print("body=>", body)
     # Store transation details inside payment model 
     payment = Payment(
         user = request.user,
@@ -151,7 +167,7 @@ def payments(request):
         orderproduct.user_id = request.user.id
         orderproduct.product_id = item.product_id
         orderproduct.quantity = item.quantity
-        orderproduct.product_price = item.product.price
+        orderproduct.product_price = item.product.selling_price
         orderproduct.ordered = True
         orderproduct.save()
         
@@ -204,6 +220,8 @@ def payments(request):
 def order_completed(request):
     order_number = request.GET.get('order_number')
     transID = request.GET.get('payment_id')
+    print(order_number)
+    print(transID)
 
     try:
         order = Order.objects.get(order_number=order_number, is_ordered=True)
@@ -213,7 +231,9 @@ def order_completed(request):
         for i in ordered_products:
             subtotall += i.product_price * i.quantity
         subtotal = round(subtotall, 2)
+        print("Subtotal ->", subtotal)
         payment = Payment.objects.get(payment_id=transID)
+        print('payment =>', payment)
 
         context = {
             'order': order,
@@ -223,7 +243,8 @@ def order_completed(request):
             'payment': payment,
             'subtotal': subtotal,
         }
-        return render(request, 'shop/orders/order_completed/order_completed.html', context)
+        return render(request, 'orders/order-success.html', context)
     except (Payment.DoesNotExist, Order.DoesNotExist):
+        print("Payment does not exists")
         return redirect('shop:shop')
     

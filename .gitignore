@@ -20,3 +20,4 @@ staticfiles/
 
 # Ignore media files
 media/
+static

@@ -62,7 +62,7 @@
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Check-out</li>
                         </ol>
                     </nav>
@@ -85,52 +85,42 @@
                                 <div class="checkout-title">
                                     <h3>Billing Details</h3>
                                 </div>
-                                <div class="row check-out">
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <div class="field-label">First Name</div>
-                                        <input type="text" name="first_name" value="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <div class="field-label">Last Name</div>
-                                        <input type="text" name="last_name" value="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <div class="field-label">Phone</div>
-                                        <input type="text" name="phone" value="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <div class="field-label">Email Address</div>
-                                        <input type="text" name="email" value="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <div class="field-label">Country</div>
-                                        <select name="country">
-                                            <option value="india" >India</option>
-                                            <option value="south_afrika">South Africa</option>
-                                            <option value="united_states">United State</option>
-                                            <option value="australia">Australia</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <div class="field-label">Address</div>
-                                        <input type="text" name="address" value="" placeholder="Street address">
-                                    </div>
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <div class="field-label">Town/City</div>
-                                        <input type="text" name="city" value="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
-                                        <div class="field-label">State</div>
-                                        <input type="text" name="state" value="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
-                                        <div class="field-label">Postal Code</div>
-                                        <input type="text" name="postal_code" value="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
-                                        <div class="field-label">Order Notes</div>
-                                        <input type="text" name="order_note" value="" placeholder="">
-                                    </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th style="font-size:15px">Name</th>
+                                                <td style="font-size:15px">{{ order.full_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="font-size:15px">Email</th>
+                                                <td style="font-size:15px">{{ order.email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="font-size:15px">Phone Number</th>
+                                                <td style="font-size:15px">{{ order.phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="font-size:15px">Address</th>
+                                                <td style="font-size:15px">{{ order.address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="font-size:15px">City</th>
+                                                <td style="font-size:15px">{{ order.city }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="font-size:15px">Country</th>
+                                                <td style="font-size:15px">{{ order.country }}</td>
+                                            </tr>
+                                            {% if order.order_note %}
+                                            <tr>
+                                                <th style="font-size:15px">Order Note</th>
+                                                <td style="font-size:15px">{{ order.order_note }}</td>
+                                            </tr>
+                                            {% endif %}
+                                        </tbody>
+                                        
+                                    </table>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12 col-xs-12">
@@ -141,19 +131,19 @@
                                         </div>
                                         <ul class="qty">
                                             {% for cart_item in cart_items %}
-                                                <li>{{cart_item.product.name}} × {{cart_item.quantity}} <span>${{cart_item.sub_total}}</span></li>
+                                                <li>{{cart_item.product.name}} × {{cart_item.quantity}} <span>₹{{cart_item.sub_total}}</span></li>
                                             {% endfor %}
                                         
                                         </ul>
                                         <ul class="sub-total">
-                                            <li>Subtotal <span class="count">$380.10</span></li>
-                                            <li>Shipping & Handling <span class="count">${{handing}}</span></li>
+                                            <li>Subtotal <span class="count">₹{{total_price}}</span></li>
+                                            <li>Shipping & Handling <span class="count">₹{{handing}}</span></li>
                                             <li>
 
                                             </li>
                                         </ul>
                                         <ul class="total">
-                                            <li>Total <span class="count">${{order_total}}</span></li>
+                                            <li>Total <span class="count">₹{{order_total}}</span></li>
                                         </ul>
                                     </div>
                                     <div class="payment-box">
@@ -162,27 +152,17 @@
                                                 <ul>
                                                     <li>
                                                         <div class="radio-option">
-                                                            <input type="radio" name="payment-group" id="payment-1"
-                                                                checked="checked">
-                                                            <label for="payment-1">Check Payments<span
+                                                            <input type="radio" name="payment-group" id="payment-1" checked="checked">
+                                                            <label for="payment-1">Cash On Delivery<span
                                                                     class="small-text">Please send a check to Store
                                                                     Name, Store Street, Store Town, Store State /
                                                                     County, Store Postcode.</span></label>
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <div class="radio-option">
-                                                            <input type="radio" name="payment-group" id="payment-2">
-                                                            <label for="payment-2">Cash On Delivery<span
-                                                                    class="small-text">Please send a check to Store
-                                                                    Name, Store Street, Store Town, Store State /
-                                                                    County, Store Postcode.</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="radio-option paypal">
-                                                            <input type="radio" name="payment-group" id="payment-3">
-                                                            <label for="payment-3">PayPal<span class="image"><img
+                                                        <div class="radio-option Phone Pay">
+                                                            <input type="radio" name="payment-group" id="payment-2" disabled>
+                                                            <label for="payment-2">Phone Pay<span class="image"><img
                                                                         src="../assets/images/paypal.png"
                                                                         alt=""></span></label>
                                                         </div>
@@ -193,7 +173,10 @@
                                         {% comment %} <div  style="width:100%" class="submit-text">
                                             <button href="#" class="btn btn-warning" style="background:#f4cca4;color:#1c1427; width:100% ; text-transform: capitalize;font-size:18px"><b>Place Order</b></button>
                                             </div> {% endcomment %}
-                                        <div class="text-end"><button href="#" class="btn-solid btn">Place Order</button></div>
+                                            
+                                        <div class="text-end">
+                                            <button href="#" onclick="placeOrder()" class="btn-solid btn">Place Order</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -206,143 +189,14 @@
     <!-- section end -->
 
 
-    <!-- footer start -->
-    <footer class="footer-light">
-        <div class="light-layout">
-            <div class="container">
-                <section class="small-section border-section border-top-0">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="subscribe">
-                                <div>
-                                    <h4>KNOW IT ALL FIRST!</h4>
-                                    <p>Never Miss Anything From Fuku By Signing Up To Our Newsletter.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <form
-                                class="form-inline subscribe-form auth-form needs-validation" method="post"
-                                id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                                <div class="form-group mx-sm-3">
-                                    <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
-                                        placeholder="Enter your email" required="required">
-                                </div>
-                                <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <section class="section-b-space light-layout">
-            <div class="container">
-                <div class="row footer-theme partition-f">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-title footer-mobile-title">
-                            <h4>about</h4>
-                        </div>
-                        <div class="footer-contant">
-                            <div class="footer-logo"><img src="../assets/images/icon/logo.png" alt=""></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                            <div class="footer-social">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col offset-xl-1">
-                        <div class="sub-title">
-                            <div class="footer-title">
-                                <h4>my account</h4>
-                            </div>
-                            <div class="footer-contant">
-                                <ul>
-                                    <li><a href="#">mens</a></li>
-                                    <li><a href="#">womens</a></li>
-                                    <li><a href="#">clothing</a></li>
-                                    <li><a href="#">accessories</a></li>
-                                    <li><a href="#">featured</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="sub-title">
-                            <div class="footer-title">
-                                <h4>why we choose</h4>
-                            </div>
-                            <div class="footer-contant">
-                                <ul>
-                                    <li><a href="#">shipping & return</a></li>
-                                    <li><a href="#">secure shopping</a></li>
-                                    <li><a href="#">gallary</a></li>
-                                    <li><a href="#">affiliates</a></li>
-                                    <li><a href="#">contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="sub-title">
-                            <div class="footer-title">
-                                <h4>store information</h4>
-                            </div>
-                            <div class="footer-contant">
-                                <ul class="contact-list">
-                                    <li><i class="fa fa-map-marker"></i>Fuku Demo Store, Demo store India
-                                        345-659</li>
-                                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
-                                    <li><i class="fa fa-envelope"></i>Email Us: Support@Fuku.com</li>
-                                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="sub-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-md-6 col-sm-12">
-                        <div class="footer-end">
-                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by
-                                pixelstrap</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6 col-sm-12">
-                        <div class="payment-card-bottom">
-                            <ul>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/visa.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/mastercard.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/paypal.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/american-express.png" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="../assets/images/icon/discover.png" alt=""></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- footer -->
+    {% include "components/footer.html" %}
     <!-- footer end -->
+
+
+   <!-- theme setting -->
+   {% include "components/dark-mode.html" %}
+   <!-- theme setting -->
 
 
 
@@ -353,6 +207,63 @@
     <!-- tap to top end -->
 
 
+
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    
+        var amount = "{{ order_total }}";
+        var transaction_id = "{{transaction_id}}"
+        var url = "{% url 'orders:payments' %}";
+        var csrftoken = getCookie('csrftoken');
+        var orderID = "{{ order.order_number }}";
+        var payment_method = 'Cash On Delivery';
+        var redirect_url = "{% url 'orders:order_complete' %}";
+    
+        // Update the logic to handle cash on delivery payment
+        function placeOrder() {
+            // Simulate processing the cash on delivery payment
+            // You may need to update this part based on your backend logic
+            sendData();
+            function sendData() {
+                alert("submitting form")
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        "X-CSRFToken": csrftoken,
+                    },
+                    body: JSON.stringify({
+                        orderID: orderID,
+                        payment_method: payment_method,
+                        transID: transaction_id,
+                        status: "Completed",
+                    }),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    alert('Your order has been placed successfully!');
+                    window.location.href = redirect_url + '?order_number=' + data.order_number+'&payment_id='+data.transID;
+                });
+            }
+            
+        }
+    </script>
+    
 
 
    <!-- latest jquery-->

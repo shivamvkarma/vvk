@@ -61,7 +61,7 @@
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">dashboard</li>
                         </ol>
                     </nav>
@@ -163,14 +163,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <div class="box">
-                                                <div class="box-title">
-                                                    <h3>Newsletters</h3><a href="#">Edit</a>
-                                                </div>
-                                                <div class="box-content">
-                                                    <p>You are currently not subscribed to any newsletter.</p>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="box mt-3">
@@ -794,7 +787,7 @@
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn btn-dark btn-custom" data-bs-dismiss="modal">no</a>
-                    <a href="index.html" class="btn btn-solid btn-custom">yes</a>
+                    <a href="/" class="btn btn-solid btn-custom">yes</a>
                 </div>
             </div>
         </div>
@@ -806,7 +799,9 @@
     {% include "components/footer.html" %}
     <!-- footer end -->
 
-
+   <!-- theme setting -->
+   {% include "components/dark-mode.html" %}
+   <!-- theme setting -->
 
     <!-- tap to top -->
     <div class="tap-top">
