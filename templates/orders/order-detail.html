@@ -1,15 +1,18 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Fuku Clothings">
     <meta name="keywords" content="Fuku Clothings">
     <meta name="author" content="Fuku Clothings">
-    <link rel="icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon" />
-    <link rel="shortcut icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon" />
+    <link rel="icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon/1.png' %}" type="image/x-icon">
     <title>Fuku clothings</title>
 
     <!--Google font-->
@@ -18,26 +21,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/font-awesome.css' %}">
 
     <!--Slick slider css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick-theme.css' %}">
 
     <!-- Animate icon -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/animate.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/animate.css' %}">
 
     <!-- Themify icon -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/themify-icons.css' %}">
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/bootstrap.css' %}">
 
     <!-- Theme css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
 </head>
+
 
 <body class="theme-color-1">
 
@@ -68,7 +71,6 @@
         </div>
     </div>
     <!-- breadcrumb End -->
-
 
     <!-- tracking page start -->
     <section class="tracking-page section-b-space">
@@ -225,38 +227,47 @@
     <!-- tap to top End -->
 
 
-    <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+   <!-- latest jquery-->
+   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 
-    <!-- menu js-->
-    <script src="../assets/js/menu.js"></script>
-
-    <!-- lazyload js-->
-    <script src="../assets/js/lazysizes.min.js"></script>
-
-    <!-- slick js-->
-    <script src="../assets/js/slick.js"></script>
-
-    <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Bootstrap Notification js-->
-    <script src="../assets/js/bootstrap-notify.min.js"></script>
-
-    <!-- Theme js-->
-    <script src="../assets/js/theme-setting.js"></script>
-    <script src="../assets/js/script.js"></script>
-
-    <script>
-        function openSearch() {
-            document.getElementById("search-overlay").style.display = "block";
-        }
-
-        function closeSearch() {
-            document.getElementById("search-overlay").style.display = "none";
-        }
-    </script>
-
-</body>
-
-</html>
+   
+   <!-- slick js-->
+   <script src="{% static 'js/slick.js' %}"></script>
+   
+   <!-- menu js-->
+   <script src="{% static 'js/menu.js' %}"></script>
+   
+   <!-- lazyload js-->
+   <script src="{% static 'js/lazysizes.min.js' %}"></script>
+   
+   <!-- Bootstrap js-->
+   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   
+   <!-- Bootstrap Notification js-->
+   <script src="{% static 'js/bootstrap-notify.min.js' %}"></script>
+   
+   
+   <!-- Theme js-->
+   <script src="{% static 'js/theme-setting.js' %}"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+   
+   <script>
+       $(window).on('load', function () {
+           setTimeout(function () {
+               $('#exampleModal').modal('show');
+           }, 2500);
+       });
+   
+       function openSearch() {
+           document.getElementById("search-overlay").style.display = "block";
+       }
+   
+       function closeSearch() {
+           document.getElementById("search-overlay").style.display = "none";
+       }
+   </script>
+   
+   </body>
+   
+   </html>
+   

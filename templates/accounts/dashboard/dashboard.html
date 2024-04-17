@@ -262,41 +262,33 @@
                                                 <table class="table cart-table order-table">
                                                     <thead>
                                                         <tr class="table-head">
-                                                            <th scope="col">image</th>
                                                             <th scope="col">Order Id</th>
-                                                            <th scope="col">Product Details</th>
-                                                            <th scope="col">Status</th>
                                                             <th scope="col">Price</th>
+                                                            <th scope="col">Status</th>
                                                             <th scope="col">View</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        {% for order in orders %}
                                                         <tr>
+                                                            
                                                             <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/1.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
+                                                                <span class="mt-0">#{{order.order_number}}</span>
                                                             </td>
                                                             <td>
-                                                                <span class="mt-0">#125021</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="fs-6">Purple polo tshirt</span>
+                                                                <span class="theme-color fs-6">₹{{order.order_total}}</span>
                                                             </td>
                                                             <td>
                                                                 <span
                                                                     class="badge rounded-pill bg-success custom-badge">Shipped</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
+                                                                <a href='{% url "accounts:order_detail" order.order_number%}'>
                                                                     <i class="fa fa-eye text-theme"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
+                                                        {% endfor %}
 
                                                         <tr>
                                                             <td>
@@ -316,7 +308,7 @@
                                                                     class="badge rounded-pill bg-danger custom-badge">Pending</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
+                                                                <span class="theme-color fs-6">₹49.54</span>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)">
@@ -325,32 +317,6 @@
                                                             </td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/27.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <p>#125948</p>
-                                                            </td>
-                                                            <td>
-                                                                <p class="fs-6">multi color polo tshirt</p>
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge rounded-pill bg-success custom-badge">Shipped</span>
-                                                            </td>
-                                                            <td>
-                                                                <p class="theme-color fs-6">$49.54</p>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <i class="fa fa-eye text-theme"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
 
                                                         <tr>
                                                             <td>
@@ -370,7 +336,7 @@
                                                                     class="badge rounded-pill bg-success custom-badge">Shipped</span>
                                                             </td>
                                                             <td>
-                                                                <p class="theme-color fs-6">$49.54</p>
+                                                                <p class="theme-color fs-6">₹49.54</p>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)">
@@ -397,7 +363,7 @@
                                                                     class="badge rounded-pill bg-secondary custom-badge">Canceled</span>
                                                             </td>
                                                             <td>
-                                                                <p class="theme-color fs-6">$49.54</p>
+                                                                <p class="theme-color fs-6">₹49.54</p>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)">
@@ -405,33 +371,7 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/34.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <span>#125021</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="fs-6">Men's Sweatshirt</span>
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge rounded-pill bg-secondary custom-badge">Canceled</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <i class="fa fa-eye text-theme"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
+                                                        
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -474,7 +414,7 @@
                                                                 <span>Purple polo tshirt</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
+                                                                <span class="theme-color fs-6">₹49.54</span>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)"
@@ -498,7 +438,7 @@
                                                                 <span>Sleevless white top</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
+                                                                <span class="theme-color fs-6">₹49.54</span>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)"
@@ -522,7 +462,7 @@
                                                                 <span>multi color polo tshirt</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
+                                                                <span class="theme-color fs-6">₹49.54</span>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)"
@@ -546,7 +486,7 @@
                                                                 <span>Candy red solid tshirt</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
+                                                                <span class="theme-color fs-6">₹49.54</span>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)"
@@ -570,7 +510,7 @@
                                                                 <span>multicolored polo tshirt</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
+                                                                <span class="theme-color fs-6">₹49.54</span>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)"
@@ -594,7 +534,7 @@
                                                                 <span>Men's Sweatshirt</span>
                                                             </td>
                                                             <td>
-                                                                <span class="theme-color fs-6">$49.54</span>
+                                                                <span class="theme-color fs-6">₹49.54</span>
                                                             </td>
                                                             <td>
                                                                 <a href="javascript:void(0)"

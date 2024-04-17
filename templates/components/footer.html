@@ -17,6 +17,7 @@
                         <form
                             class="form-inline subscribe-form auth-form needs-validation" method="post"
                             id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                            {% csrf_token %}
                             <div class="form-group mx-sm-3">
                                 <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
                                     placeholder="Enter your email" required="required">

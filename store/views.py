@@ -38,14 +38,14 @@ def shop(request, category_slug=None):
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
-        paginator = Paginator(products, 6)
+        paginator = Paginator(products, 100) #used for pagination but in the this project we don't need pagination so we have used product value 100
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
         products_count = products.count()
         
     else:
         products = Product.objects.all().filter(is_available=True)
-        paginator = Paginator(products, 6)
+        paginator = Paginator(products, 100) #used for pagination but in the this project we don't need pagination so we have used product value 100
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
         products_count = products.count()

@@ -2,12 +2,12 @@ from django.db import models
 from django.urls import reverse
 from accounts.models import Account
 from django.db.models import Avg, Count
-
+from ckeditor.fields import RichTextField
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    description = models.TextField(max_length=250, blank=True)
+    description = models.TextField(blank=True)
     image = models.ImageField(upload_to='categories', blank=True)
 
     class Meta:
@@ -25,7 +25,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    description = models.TextField(blank=True)
+    description = RichTextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     selling_price = models.DecimalField(max_digits=8, decimal_places=2)
     discount = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)

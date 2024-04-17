@@ -183,11 +183,11 @@ def activate(request, uidb64, token):
 @login_required(login_url = 'accounts:login')
 def dashboard(request):
     orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
-    print(request.user)
     profile = UserProfile.objects.get(user_id=request.user.id)
-    
+    print("orders =>", orders)
     orders_count = orders.count()
     context = {
+        'orders':orders,
         'orders_count':orders_count,
         'profile':profile,
         
@@ -270,7 +270,7 @@ def order_detail(request,order_id):
         'order': order,
         'subtotal': subtotal,
     }
-    return render(request, 'shop/accounts/dashboard/order_detail.html', context)
+    return render(request, 'orders/order-detail.html', context)
 
 
 def forget_password(request):
