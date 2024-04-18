@@ -63,7 +63,7 @@ def counter(request):
                     cart_itemsss = CartItem.objects.filter(cart=carttt, is_active=True)
 
                 for cart_itemm in cart_itemsss:
-                    total_price += (cart_itemm.product.price * cart_itemm.quantity)
+                    total_price += (cart_itemm.product.selling_price * cart_itemm.quantity)
                     quantity += cart_itemm.quantity
 
                 

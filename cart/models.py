@@ -24,4 +24,12 @@ class CartItem(models.Model):
 
     def __unicode__(self):
         return self.product
-    
+
+
+class WishlistItem(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    variation = models.ManyToManyField(Variation, blank=True)
+
+    def __str__(self):
+        return f"{self.product.name} - Wishlist"

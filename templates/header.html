@@ -128,7 +128,7 @@
                                                             <a href="{{x.product.get_prodcut_details_url}}">
                                                                 <h4>{{x.product.name}}</h4>
                                                             </a>
-                                                            <h4><span>1 x ₹ {{x.product.price}}</span></h4>
+                                                            <h4><span>{{x.quantity}} x ₹ {{x.product.selling_price}}</span></h4>
                                                         </div>
                                                     </div>
                                                     <div class="close-circle"><a href="{% url 'cart:remove_cart_item' x.product.id x.id %}"><i class="fa fa-times"

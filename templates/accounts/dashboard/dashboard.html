@@ -91,8 +91,6 @@
                             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#info"
                                         class="nav-link active">Account Info</a></li>
-                                <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#address"
-                                        class="nav-link">Address Book</a></li>
                                 <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#orders"
                                         class="nav-link">My Orders</a></li>
                                 <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#wishlist"
@@ -166,90 +164,11 @@
                                             
                                         </div>
                                     </div>
-                                    <div class="box mt-3">
-                                        <div class="box-title">
-                                            <h3>Address Book</h3><a href="#">Manage Addresses</a>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <h6>Default Billing Address</h6>
-                                                <address>You have not set a default billing address.<br><a href="#">Edit
-                                                        Address</a></address>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <h6>Default Shipping Address</h6>
-                                                <address>You have not set a default shipping address.<br><a
-                                                        href="#">Edit Address</a></address>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="address">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card mt-0">
-                                        <div class="card-body">
-                                            <div class="top-sec">
-                                                <h3>Address Book</h3>
-                                                <a href="#" class="btn btn-sm btn-solid">+ add new</a>
-                                            </div>
-                                            <div class="address-book-section">
-                                                <div class="row g-4">
-                                                    <div class="select-box active col-xl-4 col-md-6">
-                                                        <div class="address-box">
-                                                            <div class="top">
-                                                                <h6>{{user.full_name | title}} <span>home</span></h6>
-                                                            </div>
-                                                            <div class="middle">
-                                                                <div class="address">
-                                                                    <p>549 Sulphur Springs Road</p>
-                                                                    <p>Downers Grove, IL</p>
-                                                                    <p>60515</p>
-                                                                </div>
-                                                                <div class="number">
-                                                                    <p>mobile: <span>+91 123 - 456 - 7890</span></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="bottom">
-                                                                <a href="javascript:void(0)"
-                                                                    data-bs-target="#edit-address"
-                                                                    data-bs-toggle="modal" class="bottom_btn">edit</a>
-                                                                <a href="#" class="bottom_btn">remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="select-box col-xl-4 col-md-6">
-                                                        <div class="address-box">
-                                                            <div class="top">
-                                                                <h6>{{user.full_name | title}} <span>office</span></h6>
-                                                            </div>
-                                                            <div class="middle">
-                                                                <div class="address">
-                                                                    <p>549 Sulphur Springs Road</p>
-                                                                    <p>Downers Grove, IL</p>
-                                                                    <p>60515</p>
-                                                                </div>
-                                                                <div class="number">
-                                                                    <p>mobile: <span>+91 123 - 456 - 7890</span></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="bottom">
-                                                                <a href="javascript:void(0)"
-                                                                    data-bs-target="#edit-address"
-                                                                    data-bs-toggle="modal" class="bottom_btn">edit</a>
-                                                                <a href="#" class="bottom_btn">remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="tab-pane fade" id="orders">
                             <div class="row">
                                 <div class="col-12">
@@ -290,7 +209,7 @@
                                                         </tr>
                                                         {% endfor %}
 
-                                                        <tr>
+                                                        {% comment %} <tr>
                                                             <td>
                                                                 <a href="javascript:void(0)">
                                                                     <img src="../assets/images/pro3/2.jpg"
@@ -370,7 +289,7 @@
                                                                     <i class="fa fa-eye text-theme"></i>
                                                                 </a>
                                                             </td>
-                                                        </tr>
+                                                        </tr> {% endcomment %}
                                                         
                                                     </tbody>
                                                 </table>
@@ -393,7 +312,6 @@
                                                     <thead>
                                                         <tr class="table-head">
                                                             <th scope="col">image</th>
-                                                            <th scope="col">Order Id</th>
                                                             <th scope="col">Product Details</th>
                                                             <th scope="col">Price</th>
                                                             <th scope="col">Action</th>
@@ -407,131 +325,9 @@
                                                                         class="blur-up lazyloaded" alt="">
                                                                 </a>
                                                             </td>
-                                                            <td>
-                                                                <span class="mt-0">#125021</span>
-                                                            </td>
+                                                            
                                                             <td>
                                                                 <span>Purple polo tshirt</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="theme-color fs-6">₹49.54</span>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)"
-                                                                    class="btn btn-xs btn-solid">
-                                                                    Move to Cart
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/2.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <span class="mt-0">#125367</span>
-                                                            </td>
-                                                            <td>
-                                                                <span>Sleevless white top</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="theme-color fs-6">₹49.54</span>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)"
-                                                                    class="btn btn-xs btn-solid">
-                                                                    Move to Cart
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/27.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <span>#125948</span>
-                                                            </td>
-                                                            <td>
-                                                                <span>multi color polo tshirt</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="theme-color fs-6">₹49.54</span>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)"
-                                                                    class="btn btn-xs btn-solid">
-                                                                    Move to Cart
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/28.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <span>#127569</span>
-                                                            </td>
-                                                            <td>
-                                                                <span>Candy red solid tshirt</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="theme-color fs-6">₹49.54</span>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)"
-                                                                    class="btn btn-xs btn-solid">
-                                                                    Move to Cart
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/33.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <span>#125753</span>
-                                                            </td>
-                                                            <td>
-                                                                <span>multicolored polo tshirt</span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="theme-color fs-6">₹49.54</span>
-                                                            </td>
-                                                            <td>
-                                                                <a href="javascript:void(0)"
-                                                                    class="btn btn-xs btn-solid">
-                                                                    Move to Cart
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:void(0)">
-                                                                    <img src="../assets/images/pro3/34.jpg"
-                                                                        class="blur-up lazyloaded" alt="">
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <span>#125021</span>
-                                                            </td>
-                                                            <td>
-                                                                <span>Men's Sweatshirt</span>
                                                             </td>
                                                             <td>
                                                                 <span class="theme-color fs-6">₹49.54</span>
@@ -567,10 +363,20 @@
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
-                                                                    <h6>company name</h6>
+                                                                    <h6>First name</h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6>Fashion Store</h6>
+                                                                    <h6> Store</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="details">
+                                                                <div class="left">
+                                                                    <h6>Last name</h6>
+                                                                </div>
+                                                                <div class="right">
+                                                                    <h6> Store</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -594,36 +400,8 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li>
-                                                            <div class="details">
-                                                                <div class="left">
-                                                                    <h6>Year Established</h6>
-                                                                </div>
-                                                                <div class="right">
-                                                                    <h6>2018</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="details">
-                                                                <div class="left">
-                                                                    <h6>Total Employees</h6>
-                                                                </div>
-                                                                <div class="right">
-                                                                    <h6>101 - 200 People</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="details">
-                                                                <div class="left">
-                                                                    <h6>category</h6>
-                                                                </div>
-                                                                <div class="right">
-                                                                    <h6>clothing</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                        
+                                                        
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">

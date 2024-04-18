@@ -221,3 +221,60 @@ def wishlist(request, total_price=0, quantity=0, cart_items=None):
 
     return render(request, 'shop/wishlist.html', context)
 
+
+
+
+def add_to_wishlist(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    user = request.user
+    if user.is_authenticated:
+        product_variation = []
+        if request.method == 'POST':
+            for item in request.POST:
+                key = item
+                value = request.POST[key]
+                try:
+                    variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
+                    product_variation.append(variation)
+                except:
+                    pass
+        wishlist_item, created = WishlistItem.objects.get_or_create(
+            user=user,
+            product=product
+        )
+        if created:
+            # If the item is added to the wishlist for the first time
+            wishlist_item.variation.set(product_variation)
+            wishlist_item.save()
+            messages.success(request, f"{product.name} has been added to your wishlist.")
+        else:
+            # If the item is already in the wishlist
+            messages.info(request, f"{product.name} is already in your wishlist.")
+        return redirect('wishlist')
+    else:
+        # Redirect to login page if user is not authenticated
+        return redirect('account_login')
+
+def wishlist(request):
+    user = request.user
+    if user.is_authenticated:
+        wishlist_items = WishlistItem.objects.filter(user=user)
+        context = {
+            'wishlist_items': wishlist_items
+        }
+        return render(request, 'wishlist.html', context)
+    else:
+        # Redirect to login page if user is not authenticated
+        return redirect('account_login')
+
+def remove_from_wishlist(request, wishlist_item_id):
+    wishlist_item = get_object_or_404(WishlistItem, id=wishlist_item_id)
+    user = request.user
+    if user.is_authenticated and wishlist_item.user == user:
+        product_name = wishlist_item.product.name
+        wishlist_item.delete()
+        messages.success(request, f"{product_name} has been removed from your wishlist.")
+        return redirect('wishlist')
+    else:
+        # Redirect to login page if user is not authenticated or doesn't own the wishlist item
+        return redirect('account_login')
