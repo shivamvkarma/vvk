@@ -80,105 +80,62 @@
                     <table class="table cart-table">
                         <thead>
                             <tr class="table-head">
-                                <th scope="col">image</th>
-                                <th scope="col">product name</th>
-                                <th scope="col">price</th>
-                                <th scope="col">availability</th>
-                                <th scope="col">action</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Availability</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% if wishlist_items %}
+
+                            {% for item in wishlist_items %}
                             <tr>
                                 <td>
-                                    <a href="#"><img src="../assets/images/pro3/1.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></a>
                                 </td>
-                                <td><a href="#">cotton shirt</a>
+                                <td>
+                                    <a href="#">{{ item.product.name }}</a>
                                     <div class="mobile-cart-content row">
                                         <div class="col">
-                                            <p>in stock</p>
+                                            <p>{% if item.product.is_available %}In Stock{% else %}Out of Stock{% endif %}</p>
                                         </div>
                                         <div class="col">
-                                            <h2 class="td-color">$63.00</h2>
+                                            <h2 class="td-color">₹{{ item.product.price }}</h2>
                                         </div>
                                         <div class="col">
-                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
-                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
+                                            <h2 class="td-color">
+                                                <a href="{% url 'cart:remove_from_wishlist' item.id %}" class="icon me-1"><i class="ti-close"></i></a>
+                                                <a href="{% url 'cart:add_cart' item.product.id %}" class="cart"><i class="ti-shopping-cart"></i></a>
+                                            </h2>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h2>$63.00</h2>
+                                    <h2>₹{{ item.product.price }}</h2>
                                 </td>
                                 <td>
-                                    <p>in stock</p>
+                                    <p>{% if item.product.is_available %}In Stock{% else %}Out of Stock{% endif %}</p>
                                 </td>
-                                <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
-                                        class="cart"><i class="ti-shopping-cart"></i></a></td>
+                                <td>
+                                    <a href="{% url 'cart:remove_from_wishlist' item.id %}" class="icon me-3"><i class="ti-close"></i></a>
+                                    <a href="{% url 'cart:add_cart' item.product.id %}" class="cart"><i class="ti-shopping-cart"></i></a>
+                                </td>
                             </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#"><img src="../assets/images/pro3/27.jpg" alt=""></a>
-                                </td>
-                                <td><a href="#">cotton shirt</a>
-                                    <div class="mobile-cart-content row">
-                                        <div class="col">
-                                            <p>in stock</p>
-                                        </div>
-                                        <div class="col">
-                                            <h2 class="td-color">$63.00</h2>
-                                        </div>
-                                        <div class="col">
-                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
-                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h2>$63.00</h2>
-                                </td>
-                                <td>
-                                    <p>in stock</p>
-                                </td>
-                                <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
-                                        class="cart"><i class="ti-shopping-cart"></i></a></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#"><img src="../assets/images/pro3/35.jpg" alt=""></a>
-                                </td>
-                                <td><a href="#">cotton shirt</a>
-                                    <div class="mobile-cart-content row">
-                                        <div class="col">
-                                            <p>in stock</p>
-                                        </div>
-                                        <div class="col">
-                                            <h2 class="td-color">$63.00</h2>
-                                        </div>
-                                        <div class="col">
-                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
-                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h2>$63.00</h2>
-                                </td>
-                                <td>
-                                    <p>in stock</p>
-                                </td>
-                                <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
-                                        class="cart"><i class="ti-shopping-cart"></i></a></td>
-                            </tr>
+                            {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">No products available in the wishlist.</td>
+                                </tr>
+                            {% endif %}
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
             <div class="row wishlist-buttons">
-                <div class="col-12"><a href="#" class="btn btn-solid">continue shopping</a> <a href="#"
+                <div class="col-12"><a href="{% url "shop:shop" %}" class="btn btn-solid">continue shopping</a> <a href="{% url "orders:checkout" %}"
                         class="btn btn-solid">check out</a></div>
             </div>
         </div>

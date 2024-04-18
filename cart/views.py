@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 from .models import Cart, CartItem
 from store.models import Product, Variation
 
@@ -187,42 +187,13 @@ def cart(request, total_price=0, quantity=0, cart_items=None):
     return render(request, 'shop/cart.html', context)
 
 
-def wishlist(request, total_price=0, quantity=0, cart_items=None):
-    grand_total = 0
-    tax = 0
-
-    try:
-        if request.user.is_authenticated:
-            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
-        else:
-            cart = Cart.objects.get(cart_id=_cart_id(request))
-            cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        for cart_item in cart_items:
-            total_price += (cart_item.product.price * cart_item.quantity)
-            quantity += cart_item.quantity
-    
-    except ObjectDoesNotExist:
-        pass
-    
-    
-    tax = round(((2 * total_price)/100), 2)
-    grand_total = total_price + tax
-    handing = 15.00
-    total = float(grand_total) + handing
-
-    context = {
-        'total' : total_price,
-        'quantity': quantity,
-        'cart_items':cart_items,
-        'order_total':total,
-        'vat' : tax,
-        'handing':handing,
-    }
-
-    return render(request, 'shop/wishlist.html', context)
 
 
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import WishlistItem
+from store.models import Product, Variation
+from django.contrib import messages
 
 def add_to_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -262,19 +233,19 @@ def wishlist(request):
         context = {
             'wishlist_items': wishlist_items
         }
-        return render(request, 'wishlist.html', context)
+        return render(request, 'shop/wishlist.html', context)
     else:
         # Redirect to login page if user is not authenticated
         return redirect('account_login')
 
-def remove_from_wishlist(request, wishlist_item_id):
-    wishlist_item = get_object_or_404(WishlistItem, id=wishlist_item_id)
+def remove_from_wishlist(request, item_id):
+    wishlist_item = get_object_or_404(WishlistItem, id=item_id)
     user = request.user
     if user.is_authenticated and wishlist_item.user == user:
         product_name = wishlist_item.product.name
         wishlist_item.delete()
         messages.success(request, f"{product_name} has been removed from your wishlist.")
-        return redirect('wishlist')
+        return redirect('cart:wishlist')
     else:
         # Redirect to login page if user is not authenticated or doesn't own the wishlist item
         return redirect('account_login')

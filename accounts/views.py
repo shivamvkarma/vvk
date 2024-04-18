@@ -16,7 +16,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 from .token import account_activation_token
 from django.conf import settings
-
+from cart.models import WishlistItem
 
 import uuid
 
@@ -184,12 +184,17 @@ def activate(request, uidb64, token):
 def dashboard(request):
     orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
     profile = UserProfile.objects.get(user_id=request.user.id)
-    print("orders =>", orders)
+    wishlist_items = WishlistItem.objects.filter(user=request.user.id)
+
+
     orders_count = orders.count()
+    wishlist_count = wishlist_items.count()
     context = {
         'orders':orders,
         'orders_count':orders_count,
+        'wishlist_count':wishlist_count,
         'profile':profile,
+        'wishlist_items': wishlist_items,
         
     }
     return render(request, 'accounts/dashboard/dashboard.html', context)
