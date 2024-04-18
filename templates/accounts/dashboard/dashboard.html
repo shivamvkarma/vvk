@@ -369,17 +369,27 @@
                                             <div class="dashboard-box">
                                                 <div class="dashboard-title">
                                                     <h4>profile</h4>
-                                                    <a class="edit-link" href="#">edit</a>
+                                                    <a class="edit-link" href="{% url 'accounts:edit_profile' %}">edit</a>
                                                 </div>
                                                 <div class="dashboard-detail">
                                                     <ul>
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
+                                                                    <h6>Username</h6>
+                                                                </div>
+                                                                <div class="right">
+                                                                    <h6> {{user.username}}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="details">
+                                                                <div class="left">
                                                                     <h6>First name</h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6> Store</h6>
+                                                                    <h6> {{user.first_name}}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -389,7 +399,7 @@
                                                                     <h6>Last name</h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6> Store</h6>
+                                                                    <h6> {{user.last_name}}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -403,39 +413,38 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li>
-                                                            <div class="details">
-                                                                <div class="left">
-                                                                    <h6>Country / Region</h6>
-                                                                </div>
-                                                                <div class="right">
-                                                                    <h6>Downers Grove, IL</h6>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        
                                                         
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
-                                                                    <h6>street address</h6>
+                                                                    <h6>Address</h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6>549 Sulphur Springs Road</h6>
+                                                                    <h6>{{profile.address}}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
-                                                                    <h6>city/state</h6>
+                                                                    <h6>city</h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6>Downers Grove, IL</h6>
+                                                                    <h6>{{profile.city}}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
+                                                            <div class="details">
+                                                                <div class="left">
+                                                                    <h6>state</h6>
+                                                                </div>
+                                                                <div class="right">
+                                                                    <h6>{{profile.state}}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        {% comment %} <li>
                                                             <div class="details">
                                                                 <div class="left">
                                                                     <h6>zip</h6>
@@ -444,12 +453,12 @@
                                                                     <h6>60515</h6>
                                                                 </div>
                                                             </div>
-                                                        </li>
+                                                        </li> {% endcomment %}
                                                     </ul>
                                                 </div>
                                                 <div class="dashboard-title mt-lg-5 mt-3">
                                                     <h4>login details</h4>
-                                                    <a class="edit-link" href="#">edit</a>
+                                                    
                                                 </div>
                                                 <div class="dashboard-detail">
                                                     <ul>
@@ -459,8 +468,7 @@
                                                                     <h6>Email Address</h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6>{{user.email}} <a class="edit-link"
-                                                                            href="#">edit</a></h6>
+                                                                    <h6>{{user.email}}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -470,8 +478,7 @@
                                                                     <h6>Phone No.</h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6>+01 4485 5454<a class="edit-link"
-                                                                            href="#">Edit</a></h6>
+                                                                    <h6>{{user.Phone_number}}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>

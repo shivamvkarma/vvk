@@ -232,7 +232,7 @@ def edit_profile(request):
         'profile_form': profile_form,
         'userprofile': userprofile,
     }
-    return render(request, 'shop/accounts/dashboard/edit_profile.html', context)
+    return render(request, 'accounts/dashboard/profile.html', context)
 
 
 @login_required(login_url = 'accounts:login')
@@ -258,7 +258,7 @@ def change_password(request):
         else:
             messages.error(request, 'Password does not match')
             return redirect('accounts:change_password')
-    return render(request, 'shop/accounts/dashboard/change_password.html')
+    return render(request, 'accounts/dashboard/change_password.html')
 
 
 @login_required(login_url = 'accounts:login')

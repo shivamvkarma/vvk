@@ -45,9 +45,9 @@
 <body class="theme-color-1">
 
 
-    <!-- header start -->
-    {% include "header.html" %}
-    <!-- header end -->
+  <!-- header start -->
+  {% include 'header.html'%}
+  <!-- header end -->
 
 
     <!-- breadcrumb start -->
@@ -56,14 +56,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>customer's login</h2>
+                        <h2>profile</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">login</li>
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">profile</li>
                         </ol>
                     </nav>
                 </div>
@@ -73,69 +73,79 @@
     <!-- breadcrumb End -->
 
 
-    <!--section start-->
-    <section class="login-page section-b-space">
+    <!-- personal deatail section start -->
+    <section class="contact-page register-page">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <h3>Login</h3>
-                    <div class="theme-card">
-                        <form class="theme-form" action="{% url 'accounts:login' %}" method="post">
-                            {% csrf_token %}
-					        {% include "includes/alerts.html" %}<br>
-
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                <div class="col-sm-12">
+                    <h3>PERSONAL DETAIL</h3>
+                    <form class="theme-form" action="{% url 'accounts:edit_profile' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row row">
+                            <div class="col-md-6">
+                                <label for="name">First Name</label>
+                                {{user_form.first_name}}
                             </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                            <div class="col-md-6">
+                                <label for="email">Last Name</label>
+                                {{user_form.last_name}}                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Phone number</label>
+                                {{user_form.Phone_number}}
                             </div>
-                            <button type="submit" class="btn btn-solid">Login</button> &nbsp;&nbsp;&nbsp;
-                            <a href="{% url 'accounts:forget_password' %}" class="btn btn-outline">Forgot Password</a>
-                        </form>
-                        
-                    </div>
-                </div>
-                <div class="col-lg-6 right-login">
-                    <h3>New Customer</h3>
-                    <div class="theme-card authentication-right">
-                        <h6 class="title-font">Create A Account</h6>
-                        <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be
-                            able to order from our shop. To start shopping click register.</p><a href="{% url 'accounts:register' %}"
-                            class="btn btn-solid">Create an Account</a>
-                    </div>
+                            <div class="col-md-6">
+                                <label for="review">Profile Picture</label>
+                                {{profile_form.profile_picture}}
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">City *</label>
+                                {{profile_form.city}} 
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">State *</label>
+                                {{profile_form.state}} 
+                            </div>
+                            <div class="col-md-12">
+                                <label for="review">Your Address </label>
+                                {{profile_form.address}}
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-    <!--Section ends-->
 
+    <!-- Section ends -->
+
+    <br><br><br>
 
     <!-- footer -->
     {% include "components/footer.html" %}
     <!-- footer end -->
-
-
 
    <!-- theme setting -->
    {% include "components/dark-mode.html" %}
    <!-- theme setting -->
 
 
+    <!-- tap to top -->
+    <div class="tap-top">
+        <div>
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+    </div>
+    <!-- tap to top End -->
+
 
 
    <!-- latest jquery-->
    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 
-   <!-- fly cart ui jquery-->
-   <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-   
-   <!-- exitintent jquery-->
-   <script src="{% static 'js/jquery.exitintent.js' %}"></script>
-   <script src="{% static 'js/exit.js' %}"></script>
-   
+
    <!-- slick js-->
    <script src="{% static 'js/slick.js' %}"></script>
    
@@ -151,8 +161,6 @@
    <!-- Bootstrap Notification js-->
    <script src="{% static 'js/bootstrap-notify.min.js' %}"></script>
    
-   <!-- Fly cart js-->
-   <script src="{% static 'js/fly-cart.js' %}"></script>
    
    <!-- Theme js-->
    <script src="{% static 'js/theme-setting.js' %}"></script>

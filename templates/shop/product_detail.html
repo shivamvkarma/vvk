@@ -262,7 +262,7 @@
     <section>
         <div class="collection-wrapper">
             <div class="container">
-				{% include "includes/alerts.html" %}
+				{% comment %} {% include "includes/alerts.html" %} {% endcomment %}
 
                 <div class="row">
                     <div class="col-lg-6">
@@ -318,6 +318,9 @@
                                 </div>
                                 <h6>{{single_product.countReview}} ratings</h6>
                             </div>
+                            <form id="add-to-wishlist-form" action="{% url 'cart:add_to_wishlist' single_product.id %}" method="POST">
+                                {% csrf_token %}
+                            </form>
                             <form id="add-to-cart-form" action="{% url 'cart:add_cart' single_product.id %}" method="POST">
                                 {% csrf_token %}
                                 <div class="label-section">
@@ -367,7 +370,7 @@
                                 </div>
                                 <div class="product-buttons">
                                     <button type="button" id="cartEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to cart</button>
-                                    <a href="#" class="btn btn-solid"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a>
+                                    <button type="button" id="wishlistEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>Add to Wishlist</button>
                                 </div>
                             </form>
                             
@@ -390,6 +393,24 @@
                                             }
                                         }
                                     });
+
+                                    document.getElementById("wishlistEffect").addEventListener("click", function () {
+                                        // Check if sizes are available
+                                        if (!$(".size-box ul li").length) {
+                                            // No sizes available, submit the form
+                                            $("#add-to-wishlist-form").submit();
+                                        } else {
+                                            // Sizes are available, check if a size is selected
+                                            if (!$(".size-box ul").hasClass("selected")) {
+                                                // Show error message if size is not selected
+                                                $(".error-message").show();
+                                            } else {
+                                                // Hide error message if size is selected and submit the form
+                                                $(".error-message").hide();
+                                                $("#add-to-wishlist-form").submit();
+                                            }
+                                        }
+                                    });
                             
                                     $(".size-box ul li").on("click", function (e) {
                                         $(".size-box ul li").removeClass("active");
@@ -400,6 +421,7 @@
                                 });
                             </script>
                             
+
                             
                             <div class="product-count">
                                 <ul>
@@ -765,6 +787,10 @@
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("add-to-cart-btn").addEventListener("click", function () {
                 document.getElementById("add-to-cart-form").submit();
+            });
+            document.getElementById("wishlistEffect").addEventListener("click", function () {
+                // Submit the form
+                $("#add-to-wishlist-form").submit();
             });
         });
     </script>

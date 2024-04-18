@@ -221,7 +221,7 @@ def add_to_wishlist(request, product_id):
         else:
             # If the item is already in the wishlist
             messages.info(request, f"{product.name} is already in your wishlist.")
-        return redirect('wishlist')
+        return redirect('cart:wishlist')
     else:
         # Redirect to login page if user is not authenticated
         return redirect('account_login')
