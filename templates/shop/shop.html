@@ -53,7 +53,7 @@
                         <div class="col-lg-6">
                             <div class="header-contact">
                                 <ul>
-                                    <li>Welcome to Fuku clothing</li>
+                                    <li>Welcome to Fuku clothings</li>
                                     <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
                                 </ul>
                             </div>
@@ -694,8 +694,13 @@
                                                                     <h6>{{ product.name }}</h6>
                                                                 </a>
                                                                 <p>{{ product.description }}</p>
-                                                                
-                                                                <h4>₹{{ product.selling_price }} <del>₹{{ product.price }}</del> <span style="color:#ff4c3b" >{{product.discount}}% off</span> </h4>
+                                         
+                                                                <h4>₹{{ product.selling_price|floatformat }} 
+                                                                    {% if product.discount > 0 %}
+                                                                        <del>₹{{ product.price|floatformat }}</del> 
+                                                                        <span style="color:#ff4c3b" >{{product.discount|floatformat}}% off</span> 
+                                                                    {% endif %}
+                                                                </h4>
                                                                 {% comment %} <ul class="color-variant">
                                                                     <li class="bg-light0"></li>
                                                                     <li class="bg-light1"></li>

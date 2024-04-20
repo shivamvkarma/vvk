@@ -224,7 +224,7 @@ def add_to_wishlist(request, product_id):
         return redirect('cart:wishlist')
     else:
         # Redirect to login page if user is not authenticated
-        return redirect('account_login')
+        return redirect('accounts:login')
 
 def wishlist(request):
     user = request.user
@@ -236,7 +236,7 @@ def wishlist(request):
         return render(request, 'shop/wishlist.html', context)
     else:
         # Redirect to login page if user is not authenticated
-        return redirect('account_login')
+        return redirect('accounts:login')
 
 def remove_from_wishlist(request, item_id):
     wishlist_item = get_object_or_404(WishlistItem, id=item_id)
@@ -248,4 +248,4 @@ def remove_from_wishlist(request, item_id):
         return redirect('cart:wishlist')
     else:
         # Redirect to login page if user is not authenticated or doesn't own the wishlist item
-        return redirect('account_login')
+        return redirect('accounts:login')
