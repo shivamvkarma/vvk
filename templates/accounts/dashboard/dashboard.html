@@ -184,6 +184,7 @@
                                                             <th scope="col">Order Id</th>
                                                             <th scope="col">Price</th>
                                                             <th scope="col">Status</th>
+                                                            <th scope="col">Date</th>
                                                             <th scope="col">View</th>
                                                         </tr>
                                                     </thead>
@@ -200,7 +201,10 @@
                                                             </td>
                                                             <td>
                                                                 <span
-                                                                    class="badge rounded-pill bg-success custom-badge">Shipped</span>
+                                                                    class="badge rounded-pill bg-success custom-badge">{{order.payment.status}}</span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="theme-color fs-6">{{order.order_created}}</span>
                                                             </td>
                                                             <td>
                                                                 <a href='{% url "accounts:order_detail" order.order_number%}'>
