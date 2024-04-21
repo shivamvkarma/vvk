@@ -15,7 +15,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from .forms import OrderForm
 from .models import Order, Payment, OrderProduct
 from store.models import Product
-
+from accounts.models import UserProfile
 
 @login_required(login_url = 'accounts:login')
 def payment_method(request):
@@ -24,6 +24,8 @@ def payment_method(request):
 
 @login_required(login_url = 'accounts:login')
 def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
+    profile = UserProfile.objects.get(user_id=request.user.id)
+
     tax = 0.00
     handing = 0.00
     try:
@@ -35,13 +37,13 @@ def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
         for cart_item in cart_items:
             total_price += (cart_item.product.selling_price * cart_item.quantity)
             quantity += cart_item.quantity
-        total = total_price + 10
+        total = total_price
 
     except ObjectDoesNotExist:
         pass # just ignore
 
     
-    handing = 40.00 # fixed amount for shipping
+    handing = 50.00 # fixed amount for shipping
     total = float(total_price) + handing
     
     context = {
@@ -50,6 +52,7 @@ def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
         'cart_items':cart_items,
         'handing': handing,
         'vat' : tax,
+        'profile':profile,
         'order_total': total,
     }
     return render(request, 'orders/checkout.html', context)
@@ -73,7 +76,7 @@ def generate_transaction_id():
 @login_required(login_url = 'accounts:login')
 def payment(request, total=0, quantity=0):
     current_user = request.user
-    handing = 40
+    handing = 50
     # if the cart cout less than 0 , redirect to shop page 
     cart_items = CartItem.objects.filter(user=current_user)
     cart_count = cart_items.count()
@@ -88,7 +91,7 @@ def payment(request, total=0, quantity=0):
     tax = round(((2 * total)/100), 2)
 
     grand_total = total + tax
-    handing = 40
+    handing = 50
     total = float(grand_total) + handing
     
     if request.method == 'POST':
