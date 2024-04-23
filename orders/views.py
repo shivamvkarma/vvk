@@ -88,9 +88,8 @@ def payment(request, total=0, quantity=0):
     for cart_item in cart_items:
         total += (cart_item.product.selling_price * cart_item.quantity)
         quantity += cart_item.quantity
-    tax = round(((2 * total)/100), 2)
 
-    grand_total = total + tax
+    grand_total = total
     handing = 50
     total = float(grand_total) + handing
     
@@ -108,6 +107,7 @@ def payment(request, total=0, quantity=0):
             data.country = form.cleaned_data['country']
             data.state = form.cleaned_data['state']
             data.city = form.cleaned_data['city']
+            data.pin_code = form.cleaned_data['pin_code']
             data.order_note = form.cleaned_data['order_note']
             data.order_total = total
             data.tax = tax
@@ -131,6 +131,7 @@ def payment(request, total=0, quantity=0):
                 'handing': handing,
                 'vat': tax,
                 'order_total': total,
+                'subtotal': grand_total,
                 "transaction_id": generate_transaction_id()
             }
             return render(request, 'orders/payment.html', context)

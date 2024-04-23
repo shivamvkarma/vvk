@@ -109,6 +109,10 @@
                                                 <td style="font-size:15px">{{ order.city }}</td>
                                             </tr>
                                             <tr>
+                                                <th style="font-size:15px">Pin code</th>
+                                                <td style="font-size:15px">{{ order.pin_code }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th style="font-size:15px">Country</th>
                                                 <td style="font-size:15px">{{ order.country }}</td>
                                             </tr>
@@ -136,7 +140,7 @@
                                         
                                         </ul>
                                         <ul class="sub-total">
-                                            <li>Subtotal <span class="count">₹{{total_price}}</span></li>
+                                            <li>Subtotal <span class="count">₹{{subtotal}}</span></li>
                                             <li>Shipping & Handling <span class="count">₹{{handing}}</span></li>
                                             <li>
 
