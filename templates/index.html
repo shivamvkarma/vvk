@@ -1061,6 +1061,25 @@
     }
 </script>
 
+
+
+
+<script>
+    $(document).ready(function(){
+        // Set the interval for automatic slide change
+        var interval = 5000; // Adjust this value as needed (time in milliseconds)
+
+        // Function to click the next arrow
+        function clickNext() {
+            $('.home-slider .slick-next').click(); // Simulate click on the next arrow
+        }
+
+        // Start the automatic slider
+        setInterval(clickNext, interval);
+    });
+</script>
+
+
 </body>
 
 </html>

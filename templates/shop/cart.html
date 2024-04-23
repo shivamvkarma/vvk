@@ -84,16 +84,16 @@
                         <a href="{% url "orders:checkout" %}" class="cart_checkout btn btn-solid btn-xs">check out</a>
                     </div>
                 </div> {% endcomment %}
-                <div class="col-sm-12 table-responsive-xs">
+                <div class="col-sm-12 table-responsive-xs" style="overflow:scroll">
                     <table class="table cart-table">
                         <thead>
                             <tr class="table-head">
                                 <th scope="col">image</th>
                                 <th scope="col">product name</th>
-                                <th scope="col">price</th>
-                                <th scope="col">quantity</th>
-                                <th scope="col">action</th>
-                                <th scope="col">total</th>
+                                <th scope="col" style="display: table-cell;">quantity</th>
+                                <th scope="col" style="display: table-cell;">price</th>
+                                <th scope="col" style="display: table-cell;">action</th>
+                                <th scope="col" style="display: table-cell;">total</th>
                             </tr>
                         </thead>
                         {% for cart_item in cart_items %}
@@ -103,11 +103,11 @@
 
                             
                             <tr>
-                                <td>
+                                <td style="min-width:100%;">
                                     <a href="{{cart_item.product.get_prodcut_details_url}}"><img src="{{cart_item.product.image.url}}" alt=""></a>
                                 </td>
                                 <td><a href="{{cart_item.product.get_prodcut_details_url}}">{{cart_item.product.name}}</a>
-                                    <div class="mobile-cart-content row">
+                                    {% comment %} <div class="mobile-cart-content row ">
                                         <div class="col">
                                             <div class="qty-box">
                                                 <div class="input-group">
@@ -123,12 +123,9 @@
                                             <h2 class="td-color"><a href="#" class="icon"><i class="ti-close"></i></a>
                                             </h2>
                                         </div>
-                                    </div>
+                                    </div> {% endcomment %}
                                 </td>
-                                <td>
-                                    <h2>₹{{cart_item.product.selling_price}}</h2>
-                                </td>
-                                <td>
+                                <td  style="display: table-cell;min-width: 143px">
                                     <div class="qty-box">
                                         <div class="input-group">
                                             <span class="input-group-prepend">
@@ -153,10 +150,13 @@
                                         </div>
                                     </div>
                                 </td>
-                            
-                                <td><a href="{% url 'cart:remove_cart_item' cart_item.product.id cart_item.id %}" class="icon"><i class="ti-close"></i></a></td>
-                                <td>
-                                    <h2 class="td-color">₹{{cart_item.sub_total}}</h2>
+                                <td style="display: table-cell;min-width: 100%;">
+                                    <h2>₹{{cart_item.product.selling_price|floatformat}}</h2>
+                                </td>
+                                
+                                <td  style="display: table-cell;min-width: 100%;"><a href="{% url 'cart:remove_cart_item' cart_item.product.id cart_item.id %}" class="icon"><i class="ti-close"></i></a></td>
+                                <td  style="display: table-cell;min-width: 100%;">
+                                    <h2 class="td-color">₹{{cart_item.sub_total|floatformat}}</h2>
                                 </td>
                             </tr>
                         </tbody>
