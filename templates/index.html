@@ -258,38 +258,52 @@
 
     <!-- Home slider -->
     <section class="p-0">
-        <div class="slide-1 home-slider">
-            {% for content in banner_contents %}
-            <div>
-                <div class="home text-center">
-                    <img src="{% if request.user_agent.is_mobile %}{{ content.mobile_view_image.url }}{% else %}{{ content.image.url }}{% endif %}" alt="" class="bg-img blur-up lazyload">
-                    <a href="{{ content.button_link }}">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="slider-contain">
-                                    <div>
-                                        {% if content.title %}
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for content in banner_contents %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="home text-center">
+                        <img src="{% if request.user_agent.is_mobile %}{{ content.mobile_view_image.url }}{% else %}{{ content.image.url }}{% endif %}" alt="" class="d-block w-100">
+                        {% if content.button_link %}
+                        
+                        <a href="{{ content.button_link }}" class="carousel-caption">
+                            {% endif %}
+                            
+                            <div class="container">
+                                <div class="row">
+                                    {% comment %} <div class="col">
+                                        <div class="slider-contain">
+                                            {% if content.title %}
                                             <h4>{{ content.title }}</h4>
-                                        {% endif %}
-                                        {% if content.subtitle %}
+                                            {% endif %}
+                                            {% if content.subtitle %}
                                             <h1>{{ content.subtitle }}</h1>
-                                        {% endif %}
-                                        {% if content.button_text %}
-                                        <a href="{{ content.button_link }}" class="btn btn-solid">{{ content.button_text }}</a>
-                                        {% endif %}
-
-                                    </div>
+                                            {% endif %}
+                                            {% if content.button_text %}
+                                            <a href="{{ content.button_link }}" class="btn btn-solid">{{ content.button_text }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div> {% endcomment %}
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    </a>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="border: none;background: transparent;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="border: none;background: transparent;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </section>
+    
+
+    
     
 
 
@@ -306,8 +320,14 @@
                             </div>
                             <div class="contain-banner">
                                 <div>
+                                    {% if banner.discount %}
                                     <h4>{{ banner.discount }}</h4>
+                                    {% endif %}
+                                    
+                                    {% if banner.category %}
                                     <h2>{{ banner.category }}</h2>
+                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>
@@ -1060,25 +1080,6 @@
         document.getElementById("search-overlay").style.display = "none";
     }
 </script>
-
-
-
-
-<script>
-    $(document).ready(function(){
-        // Set the interval for automatic slide change
-        var interval = 5000; // Adjust this value as needed (time in milliseconds)
-
-        // Function to click the next arrow
-        function clickNext() {
-            $('.home-slider .slick-next').click(); // Simulate click on the next arrow
-        }
-
-        // Start the automatic slider
-        setInterval(clickNext, interval);
-    });
-</script>
-
 
 </body>
 
