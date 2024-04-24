@@ -76,15 +76,15 @@
     <section class="wishlist-section section-b-space">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 table-responsive-xs">
+                <div class="col-sm-12 table-responsive-xs" style="overflow:scroll">
                     <table class="table cart-table">
                         <thead>
                             <tr class="table-head">
                                 <th scope="col">Image</th>
                                 <th scope="col">Product Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Availability</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" style="display: table-cell;">Price</th>
+                                <th scope="col" style="display: table-cell;">Availability</th>
+                                <th scope="col" style="display: table-cell;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,12 +92,16 @@
 
                             {% for item in wishlist_items %}
                             <tr>
-                                <td>
+                                <td style="min-width:100%;">
                                     <a href="#"><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></a>
                                 </td>
-                                <td>
-                                    <a href="#">{{ item.product.name }}</a>
-                                    <div class="mobile-cart-content row">
+                                <td style="display: table-cell;min-width: 100%;">
+                                    <a href="#">{{ item.product.name }}</a> {% if item.variation.all %}
+                                    {% for variant in item.variation.all %}
+                                    <p>{{variant.variation_category | capfirst}} : {{variant.variation_value | capfirst}}</p>
+                                    {% endfor %}
+                                {% endif %} 
+                                    {% comment %} <div class="mobile-cart-content row">
                                         <div class="col">
                                             <p>{% if item.product.is_available %}In Stock{% else %}Out of Stock{% endif %}</p>
                                         </div>
@@ -110,15 +114,15 @@
                                                 <a href="{% url 'cart:add_cart' item.product.id %}" class="cart"><i class="ti-shopping-cart"></i></a>
                                             </h2>
                                         </div>
-                                    </div>
+                                    </div> {% endcomment %}
                                 </td>
-                                <td>
+                                <td style="display: table-cell;min-width: 100%;">
                                     <h2>₹{{ item.product.price }}</h2>
                                 </td>
-                                <td>
+                                <td style="display: table-cell;min-width: 100%;">
                                     <p>{% if item.product.is_available %}In Stock{% else %}Out of Stock{% endif %}</p>
                                 </td>
-                                <td>
+                                <td style="display: table-cell;min-width: 100%;">
                                     <a href="{% url 'cart:remove_from_wishlist' item.id %}" class="icon me-3"><i class="ti-close"></i></a>
                                     <a href="{% url 'cart:add_cart' item.product.id %}" class="cart"><i class="ti-shopping-cart"></i></a>
                                 </td>

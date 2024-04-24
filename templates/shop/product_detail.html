@@ -38,6 +38,26 @@
 
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        .product-right .color-box ul li a {
+            color: #222;
+            font-size: 18px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .product-right .color-box ul li.active {
+            background-color: #efefef;
+        }
+    </style>
 
 </head>
 
@@ -340,6 +360,7 @@
                                     <li class="bg-light1"></li>
                                     <li class="bg-light2"></li>
                                 </ul> {% endcomment %}
+
                                 <div id="selectSize" class="addeffect-section product-description border-product">
                                     {% if single_product.variation_set.sizes %}
                                     <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal" data-bs-target="#sizemodal">size chart</a></span></h6>
@@ -347,7 +368,7 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{single_product.name}}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body"><img src="../assets/images/size-chart.jpg" alt="" class="img-fluid blur-up lazyload"></div>
@@ -357,14 +378,46 @@
                                     <h6 class="error-message" style="display: none;">please select size</h6>
                                     
                                     <div class="size-box">
-                                        <ul>
+                                        <select name="size" class="form-control" required>
+                                            <option value="" disabled selected>Select</option>
+
                                             {% for x in single_product.variation_set.sizes%}
-                                            <li><a href="javascript:void(0)">{{x.variation_value | capfirst}}</a></li>
+                                            <option value="{{x.variation_value | lower}}">
+                                                {{x.variation_value | capfirst}}</option>
                                             {% endfor %}
-                                            {% comment %} <li><a href="javascript:void(0)">m</a></li>
-                                            <li><a href="javascript:void(0)">l</a></li>
-                                            <li><a href="javascript:void(0)">xl</a></li> {% endcomment %}
-                                        </ul>
+
+                                        </select>
+                                    </div>
+                                    {% endif %}
+                                    {% comment %} <h6 class="product-title">quantity</h6>
+                                    <div class="qty-box">
+                                        <div class="input-group"><span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
+                                            <input type="text" name="quantity" class="form-control input-number" value="1">
+                                            <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span>
+                                        </div>
+                                    </div> {% endcomment %}
+                                </div>
+                                
+                                <div id="selectColor" class="addeffect-section product-description border-product">
+                                    {% if single_product.variation_set.colors %}
+                                    <h6 class="product-title size-text">select color</h6>
+                                    <h6 class="error-message" style="display: none;">please select color</h6>
+                                    
+                                    <div class="color-box" >
+                                        {% comment %} <ul>
+                                            {% for x in single_product.variation_set.colors%}
+                                            <li style="height: 35px;width: 35px;border-radius: 50%;margin-right: 10px;cursor: pointer;border: 1px solid #efefef;text-align: center;border-radius: 6%;padding: 0 35px;"><a href="javascript:void(0)">{{x.variation_value | capfirst}}</a></li>
+                                            {% endfor %}
+                                        </ul> {% endcomment %}
+                                        <select name="color" class="form-control" required>
+                                            <option value="" disabled selected>Select</option>
+
+                                            {% for x in single_product.variation_set.colors%}
+                                            <option value="{{x.variation_value | lower}}">
+                                                {{x.variation_value | capfirst}}</option>
+                                            {% endfor %}
+
+                                        </select>
                                     </div>
                                     {% endif %}
                                     {% comment %} <h6 class="product-title">quantity</h6>
@@ -376,59 +429,10 @@
                                     </div> {% endcomment %}
                                 </div>
                                 <div class="product-buttons">
-                                    <button type="button" id="cartEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to cart</button>
+                                    <button type="submit" id="cartEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to cart</button>
                                     <button type="button" id="wishlistEffect" class="btn btn-solid hover-solid btn-animation"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>Add to Wishlist</button>
                                 </div>
                             </form>
-                            
-                            <script>
-                                document.addEventListener("DOMContentLoaded", function () {
-                                    document.getElementById("cartEffect").addEventListener("click", function () {
-                                        // Check if sizes are available
-                                        if (!$(".size-box ul li").length) {
-                                            // No sizes available, submit the form
-                                            $("#add-to-cart-form").submit();
-                                        } else {
-                                            // Sizes are available, check if a size is selected
-                                            if (!$(".size-box ul").hasClass("selected")) {
-                                                // Show error message if size is not selected
-                                                $(".error-message").show();
-                                            } else {
-                                                // Hide error message if size is selected and submit the form
-                                                $(".error-message").hide();
-                                                $("#add-to-cart-form").submit();
-                                            }
-                                        }
-                                    });
-
-                                    document.getElementById("wishlistEffect").addEventListener("click", function () {
-                                        // Check if sizes are available
-                                        if (!$(".size-box ul li").length) {
-                                            // No sizes available, submit the form
-                                            $("#add-to-wishlist-form").submit();
-                                        } else {
-                                            // Sizes are available, check if a size is selected
-                                            if (!$(".size-box ul").hasClass("selected")) {
-                                                // Show error message if size is not selected
-                                                $(".error-message").show();
-                                            } else {
-                                                // Hide error message if size is selected and submit the form
-                                                $(".error-message").hide();
-                                                $("#add-to-wishlist-form").submit();
-                                            }
-                                        }
-                                    });
-                            
-                                    $(".size-box ul li").on("click", function (e) {
-                                        $(".size-box ul li").removeClass("active");
-                                        $("#selectSize").removeClass("cartMove");
-                                        $(this).addClass("active");
-                                        $(this).parent().addClass("selected");
-                                    });
-                                });
-                            </script>
-                            
-
                             
                             <div class="product-count">
                                 <ul>
@@ -775,6 +779,50 @@
     <!-- sticky cart bottom end -->
 
 
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Event listener for the Add to Wishlist button
+            document.getElementById("wishlistEffect").addEventListener("click", function () {
+                // Check if size and color are selected
+                if (isSizeSelected() && isColorSelected()) {
+                    // Set the selected size and color as hidden fields in the form
+                    var selectedSize = $(".size-box select[name='size']").val();
+                    var selectedColor = $(".color-box select[name='color']").val();
+                    $("<input>").attr({
+                        type: "hidden",
+                        name: "size",
+                        value: selectedSize
+                    }).appendTo("#add-to-wishlist-form");
+                    $("<input>").attr({
+                        type: "hidden",
+                        name: "color",
+                        value: selectedColor
+                    }).appendTo("#add-to-wishlist-form");
+                    // Submit the form
+                    $("#add-to-wishlist-form").submit();
+                } else {
+                    // Display an error message if size or color is not selected
+                    $(".error-message").show();
+                }
+            });
+    
+            // Function to check if size is selected
+            function isSizeSelected() {
+                return $(".size-box select[name='size']").val() !== null;
+            }
+    
+            // Function to check if color is selected
+            function isColorSelected() {
+                return $(".color-box select[name='color']").val() !== null;
+            }
+        });
+    </script>
+    
+    
+
+
     <!-- theme setting -->
     {% include "components/dark-mode.html" %}
     <!-- theme setting -->
@@ -794,18 +842,6 @@
     </div>
     <!-- added to cart notification -->
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("add-to-cart-btn").addEventListener("click", function () {
-                document.getElementById("add-to-cart-form").submit();
-            });
-            document.getElementById("wishlistEffect").addEventListener("click", function () {
-                // Submit the form
-                $("#add-to-wishlist-form").submit();
-            });
-        });
-    </script>
 
 
 

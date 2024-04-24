@@ -107,6 +107,11 @@
                                     <a href="{{cart_item.product.get_prodcut_details_url}}"><img src="{{cart_item.product.image.url}}" alt=""></a>
                                 </td>
                                 <td><a href="{{cart_item.product.get_prodcut_details_url}}">{{cart_item.product.name}}</a>
+                                {% if cart_item.variation.all %}
+                                    {% for variant in cart_item.variation.all %}
+                                    <p>{{variant.variation_category | capfirst}} : {{variant.variation_value | capfirst}}</p>
+                                    {% endfor %}
+                                {% endif %} 
                                     {% comment %} <div class="mobile-cart-content row ">
                                         <div class="col">
                                             <div class="qty-box">
