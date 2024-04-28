@@ -443,15 +443,17 @@
                                             $(action).submit();
                                         } else {
                                             // Sizes are available, check if a size is selected
-                                            if (!$(".size-box ul").hasClass("selected")) {
+                                            if ($(".size-box ul").length && !$(".size-box ul").hasClass('selected')) {
                                                 // Show error message if size is not selected
                                                 $("#selectSize .error-message").show();
+                                                alert("not select size")
 
                                             } else {
                                                 // Check if a color is selected
-                                                if (!$(".color-box ul").hasClass("selected")) {
+                                                if ($(".color-box ul").length && !$(".color-box ul").hasClass('selected')) {
                                                     // Show error message if color is not selected
                                                     $("#selectColor .error-message").show();
+                                                    alert("not select color")
                                                 } else {
                                                     // Hide error message if size and color are selected and submit the form
                                                     $(".error-message").hide();
