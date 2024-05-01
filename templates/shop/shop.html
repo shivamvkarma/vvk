@@ -454,70 +454,95 @@
                     <div class="col-sm-3 collection-filter">
                         <!-- side-bar colleps block stat -->
                         <div class="collection-filter-block">
+                            <form action="{% url 'shop:shop' %}" method="get">
+                            {% csrf_token %}
                             <!-- brand filter start -->
                             <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left"
                                         aria-hidden="true"></i> back</span></div>
-                            <div class="collection-collapse-block open">
-                                <h3 class="collapse-block-title">Gender</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="collection-brand-filter">
-                                        <div class="form-check collection-filter-checkbox">
-                                            <input type="checkbox" class="form-check-input" id="zara">
-                                            <label class="form-check-label" for="zara">Male</label>
-                                        </div>
-                                        <div class="form-check collection-filter-checkbox">
-                                            <input type="checkbox" class="form-check-input" id="only">
-                                            <label class="form-check-label" for="only">Female</label>
-                                        </div>
-                                        <div class="form-check collection-filter-checkbox">
-                                            <input type="checkbox" class="form-check-input" id="only">
-                                            <label class="form-check-label" for="only">Unisex</label>
+                                <div class="collection-collapse-block open">
+                                    <h3 class="collapse-block-title">Gender</h3>
+                                    <div class="collection-collapse-block-content">
+                                        <div class="collection-brand-filter">
+                                            <div class="form-check collection-filter-checkbox">
+                                                <input type="checkbox" class="form-check-input" name="gender" value="male" id="male" {% if 'male' in gender_filter_values %} checked {% endif %}>
+                                                <label class="form-check-label" for="male">Male</label>
+                                            </div>
+                                            <div class="form-check collection-filter-checkbox">
+                                                <input type="checkbox" class="form-check-input" name="gender" value="female" id="female" {% if 'female' in gender_filter_values %} checked {% endif %}>
+                                                <label class="form-check-label" for="female">Female</label>
+                                            </div>
+                                            <div class="form-check collection-filter-checkbox">
+                                                <input type="checkbox" class="form-check-input" id="unisex" name="gender" value="unisex" {% if 'unisex' in gender_filter_values %} checked {% endif %}>
+                                                <label class="form-check-label" for="unisex">Unisex</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                        
                             <!-- color filter start here -->
-                            <div class="collection-collapse-block open">
-                                <h3 class="collapse-block-title">colors</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="color-selector">
-                                        <ul>
-                                            <li class="color-1 active"></li>
-                                            <li class="color-2"></li>
-                                            <li class="color-3"></li>
-                                            <li class="color-4"></li>
-                                            <li class="color-5"></li>
-                                            <li class="color-6"></li>
-                                            <li class="color-7"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- size filter start here -->
                             <div class="collection-collapse-block border-0 open">
-                                <h3 class="collapse-block-title">size</h3>
+                                <h3 class="collapse-block-title">Colors</h3>
                                 <div class="collection-collapse-block-content">
                                     <div class="collection-brand-filter">
                                         <div class="form-check collection-filter-checkbox">
-                                            <input type="checkbox" class="form-check-input" id="hundred">
-                                            <label class="form-check-label" for="hundred">s</label>
+                                            <input type="checkbox" class="form-check-input" id="color-red" name="color" value="red" {% if 'red' in color_filter_values %} checked {% endif %}>
+                                            <label class="form-check-label" for="color-red">Red</label>
                                         </div>
                                         <div class="form-check collection-filter-checkbox">
-                                            <input type="checkbox" class="form-check-input" id="twohundred">
-                                            <label class="form-check-label" for="twohundred">m</label>
+                                            <input type="checkbox" class="form-check-input" id="color-blue" name="color" value="blue" {% if 'blue' in color_filter_values %} checked {% endif %}>
+                                            <label class="form-check-label" for="color-blue">Blue</label>
                                         </div>
                                         <div class="form-check collection-filter-checkbox">
-                                            <input type="checkbox" class="form-check-input" id="threehundred">
-                                            <label class="form-check-label" for="threehundred">l</label>
+                                            <input type="checkbox" class="form-check-input" id="color-green" name="color" value="green" {% if 'green' in color_filter_values %} checked {% endif %}>
+                                            <label class="form-check-label" for="color-green">Green</label>
                                         </div>
                                         <div class="form-check collection-filter-checkbox">
-                                            <input type="checkbox" class="form-check-input" id="fourhundred">
-                                            <label class="form-check-label" for="fourhundred">xl</label>
+                                            <input type="checkbox" class="form-check-input" id="color-yellow" name="color" value="yellow" {% if 'yellow' in color_filter_values %} checked {% endif %}>
+                                            <label class="form-check-label" for="color-yellow">Yellow</label>
+                                        </div>
+                                        <div class="form-check collection-filter-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="color-orange" name="color" value="orange" {% if 'orange' in color_filter_values %} checked {% endif %}>
+                                            <label class="form-check-label" for="color-orange">Orange</label>
+                                        </div>
+                                        <div class="form-check collection-filter-checkbox">
+                                            <input type="checkbox" class="form-check-input" id="color-purple" name="color" value="purple" {% if 'purple' in color_filter_values %} checked {% endif %}>
+                                            <label class="form-check-label" for="color-purple">Purple</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
+                            
+                            
+                            
+                            <!-- size filter start here -->
+                            <div class="collection-collapse-block-content">
+                                <div class="collection-brand-filter">
+                                    <div class="form-check collection-filter-checkbox">
+                                        <input type="checkbox" class="form-check-input" id="size-s" name="size" value="s" {% if 's' in size_filter_values %} checked {% endif %}>
+                                        <label class="form-check-label" for="size-s">Small (S)</label>
+                                    </div>
+                                    <div class="form-check collection-filter-checkbox">
+                                        <input type="checkbox" class="form-check-input" id="size-m" name="size" value="m" {% if 'm' in size_filter_values %} checked {% endif %}>
+                                        <label class="form-check-label" for="size-m">Medium (M)</label>
+                                    </div>
+                                    <div class="form-check collection-filter-checkbox">
+                                        <input type="checkbox" class="form-check-input" id="size-l" name="size" value="l" {% if 'l' in size_filter_values %} checked {% endif %}>
+                                        <label class="form-check-label" for="size-l">Large (L)</label>
+                                    </div>
+                                    <div class="form-check collection-filter-checkbox">
+                                        <input type="checkbox" class="form-check-input" id="size-xl" name="size" value="xl" {% if 'xl' in size_filter_values %} checked {% endif %}>
+                                        <label class="form-check-label" for="size-xl">Extra Large (XL)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            <button type="submit" class="btn btn-solid me-3">Apply Filters</button>
+
+                            </form>
+
                         </div>
                         <!-- silde-bar colleps block end here -->
                         <!-- side-bar single product slider start -->
@@ -542,7 +567,7 @@
                                     {% endfor %}
                                 </div>
                                 <div>
-                                    {% for product in products|slice:"3:" %}
+                                    {% for product in products|slice:"3:6" %}
                                     <div class="media">
                                         <a href="#"><img class="img-fluid blur-up lazyload" src="{{ product.image.url }}" alt=""></a>
                                         <div class="media-body align-self-center">
@@ -621,97 +646,102 @@
                                         </div>
                                         <div class="product-wrapper-grid product-load-more">
                                             <div class="row margin-res">
-                                                {% for product in products %}
-                                                <div class="col-xl-3 col-6 col-grid-box">
-                                                    <div class="product-box">
-                                                        <div class="img-wrapper">
-                                                            <div class="front">
-                                                                <a href="{{ product.get_prodcut_details_url }}"><img src="{{ product.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="{{ product.name }}"></a>
-                                                            </div>
-                                                            <div class="back">
-                                                                <a href="{{ product.get_prodcut_details_url }}"><img src="{{ product.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="{{ product.name }}"></a>
-                                                            </div>
-                                                            <div class="cart-info cart-wrap">
-                                                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart"></i></button>
-                                                                <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
-                                                                {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> {% endcomment %}
-                                                                {% comment %} <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a> {% endcomment %}
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-detail">
-                                                            <div>
-                                                                <div class="rating">
-                                                                    <i class="fa fa-star"></i> 
-                                                                    <i class="fa fa-star"></i> 
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
+                                                {% if products %}
+                                                    {% for product in products %}
+                                                        <div class="col-xl-3 col-6 col-grid-box">
+                                                            <div class="product-box">
+                                                                <div class="img-wrapper">
+                                                                    <div class="front">
+                                                                        <a href="{{ product.get_prodcut_details_url }}"><img src="{{ product.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="{{ product.name }}"></a>
+                                                                    </div>
+                                                                    <div class="back">
+                                                                        <a href="{{ product.get_prodcut_details_url }}"><img src="{{ product.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="{{ product.name }}"></a>
+                                                                    </div>
+                                                                    <div class="cart-info cart-wrap">
+                                                                        <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart"></i></button>
+                                                                        <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
+                                                                        {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> {% endcomment %}
+                                                                        {% comment %} <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a> {% endcomment %}
+                                                                    </div>
                                                                 </div>
+                                                                <div class="product-detail">
+                                                                    <div>
+                                                                        <div class="rating">
+                                                                            <i class="fa fa-star"></i> 
+                                                                            <i class="fa fa-star"></i> 
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
 
-                                                                {% comment %} 
-                                                                
-                                                                <div class="rating">
-                                                                    <span>
-                                                                        {% if product.averageRating >= 1 %}
-                                                                            <i class="fa fa-star" style="color: #ffa200;"></i>
-                                                                        {% else %}
-                                                                            <i class="fa fa-star-o" style="color: #ddd;"></i>
-                                                                        {% endif %}
-                                                                    </span>
-                                                                    <span>
-                                                                        {% if product.averageRating >= 2 %}
-                                                                            <i class="fa fa-star" style="color: #ffa200;"></i>
-                                                                        {% else %}
-                                                                            <i class="fa fa-star-o" style="color: #ddd;"></i>
-                                                                        {% endif %}
-                                                                    </span>
-                                                                    <span>
-                                                                        {% if product.averageRating >= 3 %}
-                                                                            <i class="fa fa-star" style="color: #ffa200;"></i>
-                                                                        {% else %}
-                                                                            <i class="fa fa-star-o" style="color: #ddd;"></i>
-                                                                        {% endif %}
-                                                                    </span>
-                                                                    <span>
-                                                                        {% if product.averageRating >= 4 %}
-                                                                            <i class="fa fa-star" style="color: #ffa200;"></i>
-                                                                        {% else %}
-                                                                            <i class="fa fa-star-o" style="color: #ddd;"></i>
-                                                                        {% endif %}
-                                                                    </span>
-                                                                    <span>
-                                                                        {% if product.averageRating >= 5 %}
-                                                                            <i class="fa fa-star" style="color: #ffa200;"></i>
-                                                                        {% else %}
-                                                                            <i class="fa fa-star-o" style="color: #ddd;"></i>
-                                                                        {% endif %}
-                                                                    </span>
-                                                                    <span>({{ product.countReview }} reviews)</span>
-                                                                </div> {% endcomment %}
-                                                                
-                                                                
-                                                                <a href="{{ product.get_prodcut_details_url }}">
-                                                                    <h6>{{ product.name }}</h6>
-                                                                </a>
-                                                                <p>{{ product.description }}</p>
-                                         
-                                                                <h4>₹{{ product.selling_price|floatformat }} 
-                                                                    {% if product.discount > 0 %}
-                                                                        <del>₹{{ product.price|floatformat }}</del> 
-                                                                        <span style="color:#ff4c3b" >{{product.discount|floatformat}}% off</span> 
-                                                                    {% endif %}
-                                                                </h4>
-                                                                {% comment %} <ul class="color-variant">
-                                                                    <li class="bg-light0"></li>
-                                                                    <li class="bg-light1"></li>
-                                                                    <li class="bg-light2"></li>
-                                                                </ul> {% endcomment %}
+                                                                        {% comment %} 
+                                                                        
+                                                                        <div class="rating">
+                                                                            <span>
+                                                                                {% if product.averageRating >= 1 %}
+                                                                                    <i class="fa fa-star" style="color: #ffa200;"></i>
+                                                                                {% else %}
+                                                                                    <i class="fa fa-star-o" style="color: #ddd;"></i>
+                                                                                {% endif %}
+                                                                            </span>
+                                                                            <span>
+                                                                                {% if product.averageRating >= 2 %}
+                                                                                    <i class="fa fa-star" style="color: #ffa200;"></i>
+                                                                                {% else %}
+                                                                                    <i class="fa fa-star-o" style="color: #ddd;"></i>
+                                                                                {% endif %}
+                                                                            </span>
+                                                                            <span>
+                                                                                {% if product.averageRating >= 3 %}
+                                                                                    <i class="fa fa-star" style="color: #ffa200;"></i>
+                                                                                {% else %}
+                                                                                    <i class="fa fa-star-o" style="color: #ddd;"></i>
+                                                                                {% endif %}
+                                                                            </span>
+                                                                            <span>
+                                                                                {% if product.averageRating >= 4 %}
+                                                                                    <i class="fa fa-star" style="color: #ffa200;"></i>
+                                                                                {% else %}
+                                                                                    <i class="fa fa-star-o" style="color: #ddd;"></i>
+                                                                                {% endif %}
+                                                                            </span>
+                                                                            <span>
+                                                                                {% if product.averageRating >= 5 %}
+                                                                                    <i class="fa fa-star" style="color: #ffa200;"></i>
+                                                                                {% else %}
+                                                                                    <i class="fa fa-star-o" style="color: #ddd;"></i>
+                                                                                {% endif %}
+                                                                            </span>
+                                                                            <span>({{ product.countReview }} reviews)</span>
+                                                                        </div> {% endcomment %}
+                                                                        
+                                                                        
+                                                                        <a href="{{ product.get_prodcut_details_url }}">
+                                                                            <h6>{{ product.name }}</h6>
+                                                                        </a>
+                                                                        <p>{{ product.description }}</p>
+                                                
+                                                                        <h4>₹{{ product.selling_price|floatformat }} 
+                                                                            {% if product.discount > 0 %}
+                                                                                <del>₹{{ product.price|floatformat }}</del> 
+                                                                                <span style="color:#ff4c3b" >{{product.discount|floatformat}}% off</span> 
+                                                                            {% endif %}
+                                                                        </h4>
+                                                                        {% comment %} <ul class="color-variant">
+                                                                            <li class="bg-light0"></li>
+                                                                            <li class="bg-light1"></li>
+                                                                            <li class="bg-light2"></li>
+                                                                        </ul> {% endcomment %}
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <div class="d-flex justify-content-center align-items-center mt-5">
+                                                        <h4>No products found!</h4>
                                                     </div>
-                                                </div>
-                                                {% endfor %}
-
+                                                {% endif %}
 
                                                 
                                                 {% comment %} HTML product Card {% endcomment %}
@@ -767,8 +797,11 @@
                                                 
                                             </div>
                                         </div>
+                                        
+                                        {% if products %}
                                         <div class="load-more-sec"><a href="javascript:void(0)" class="loadMore">load
-                                                more</a></div>
+                                            more</a></div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

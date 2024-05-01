@@ -31,36 +31,64 @@ def home(request):
 
 
 
+from django.db.models import Q
+
 def shop(request, category_slug=None):
     categories = None
     products = None
 
-    if category_slug != None:
+    # Filter products based on category
+    if category_slug:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
-        paginator = Paginator(products, 100) #used for pagination but in the this project we don't need pagination so we have used product value 100
-        page = request.GET.get('page')
-        paged_products = paginator.get_page(page)
-        products_count = products.count()
-        
     else:
-        products = Product.objects.all().filter(is_available=True)
-        paginator = Paginator(products, 100) #used for pagination but in the this project we don't need pagination so we have used product value 100
-        page = request.GET.get('page')
-        paged_products = paginator.get_page(page)
-        products_count = products.count()
+        products = Product.objects.filter(is_available=True)
 
-            
-        
+    # Apply filters from the request
+    size_filter_values = request.GET.getlist('size')
+    color_filter_values = request.GET.getlist('color')
+    gender_filter_values = request.GET.getlist('gender')
+
+    # if gender:
+    #     products = products.filter(gender__icontains=gender)
+
+    # Initialize the products queryset
+    products = Product.objects.all()
+
+    # Apply size filters
+    if size_filter_values:
+        size_filters = Q()
+        for size in size_filter_values:
+            size_filters |= Q(variation__variation_category='size', variation__variation_value__iexact=size)
+        products = products.filter(size_filters).distinct()
+
+    # Apply color filters
+    if color_filter_values:
+        color_filters = Q()
+        for color in color_filter_values:
+            color_filters |= Q(variation__variation_category='color', variation__variation_value__iexact=color)
+        products = products.filter(color_filters).distinct()
     
-    for product in products:
-        reviews = ReviewRating.objects.order_by('-updated_at').filter(product_id=product.id, status=True)
-    
+    # if gender_filter_values:
+    #     products = products.filter(gender__in=gender_filter_values)
+
+    # Ensure distinct results
+    products = products.distinct()
+
+    # Pagination
+    paginator = Paginator(products, 100)
+    page_number = request.GET.get('page')
+    paged_products = paginator.get_page(page_number)
+    products_count = products.count()
+
     context = {
         'category_slug': category_slug,
-        'products' : paged_products,
+        'products': paged_products,
         'products_count': products_count,
-        
+        'size_filter_values': size_filter_values,
+        'color_filter_values': color_filter_values,
+        'gender_filter_values': gender_filter_values
+
     }
     return render(request, 'shop/shop.html', context)
 
