@@ -262,14 +262,18 @@
             <div class="carousel-inner">
                 {% for content in banner_contents %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
+
                     <div class="home text-center">
-                        <img src="{% if request.user_agent.is_mobile %}{{ content.mobile_view_image.url }}{% else %}{{ content.image.url }}{% endif %}" alt="" class="d-block w-100">
-                        {% if content.button_link %}
-                        
-                        <a href="{{ content.button_link }}" class="carousel-caption">
-                            {% endif %}
-                            
-                            <div class="container">
+                    {% if content.button_link %}
+                        <a href="{{ content.button_link }}">
+                    {% endif %}   
+
+                    <img src="{% if request.user_agent.is_mobile %}{{ content.mobile_view_image.url }}{% else %}{{ content.image.url }}{% endif %}" alt="" class="d-block w-100">
+                    
+                    {% if content.button_link %}
+                        </a>
+                    {% endif %}    
+                        <div class="container">
                                 <div class="row">
                                     {% comment %} <div class="col">
                                         <div class="slider-contain">
@@ -286,7 +290,6 @@
                                     </div> {% endcomment %}
                                 </div>
                             </div>
-                        </a>
                     </div>
                 </div>
                 {% endfor %}

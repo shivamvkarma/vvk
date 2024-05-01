@@ -526,7 +526,7 @@
                                 {{single_product.description | safe }}
                             </div>
 
-                            <div class="border-product">
+                            {% comment %} <div class="border-product">
                                 <h6 class="product-title">shipping info</h6>    
                                 <ul class="shipping-info">
                                     <li>100% Original Products</li>
@@ -534,11 +534,11 @@
                                     <li>Easy 7-day replacement and exchange policy</li>
                                     <li>12-hour return policy for customer</li>
                                 </ul>
-                            </div>
-                            <div class="border-product">
+                            </div> {% endcomment %}
+                            {% comment %} <div class="border-product">
                                 <h6 class="product-title">100% secure payment</h6>
                                 <img src="{% static 'images/payment.png' %}" class="img-fluid mt-1" alt="">
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                     </div>
                 </div>
