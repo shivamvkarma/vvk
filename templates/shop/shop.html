@@ -639,6 +639,12 @@
                                                                     <option value="price_low_to_high" {% if request.GET.sort == 'price_low_to_high' %} selected {% endif %} >Price: Low to High</option>
                                                                     <option value="price_high_to_low" {% if request.GET.sort == 'price_high_to_low' %} selected {% endif %} >Price: High to Low</option>
                                                                 </select>
+                                                                <!-- Hidden input fields for other filters -->
+                                                                {% for key, value in request.GET.items %}
+                                                                    {% if key != 'sort' %}
+                                                                        <input type="hidden" name="{{ key }}" value="{{ value }}">
+                                                                    {% endif %}
+                                                                {% endfor %}
                                                             </form>
                                                         </div>
                                                     </div>
