@@ -554,27 +554,27 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-12">
                     <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab"
+                        {% comment %} <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab"
                                 href="#top-home" role="tab" aria-selected="true"><i
                                     class="icofont icofont-ui-home"></i>Details</a>
                             <div class="material-border"></div>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" id="review-top-tab" data-bs-toggle="tab"
-                                href="#top-review" role="tab" aria-selected="false"><i
+                        </li> {% endcomment %}
+                        <li class="nav-item"><a class="nav-link active" id="review-top-tab" data-bs-toggle="tab"
+                                href="#top-review" role="tab" aria-selected="true"><i
                                     class="icofont icofont-contacts"></i>Write Review</a>
                             <div class="material-border"></div>
                         </li>
                     </ul>
                     <div class="tab-content nav-material" id="top-tabContent">
-                        <div class="tab-pane fade show active" id="top-home" role="tabpanel"
+                        {% comment %} <div class="tab-pane fade show active" id="top-home" role="tabpanel"
                             aria-labelledby="top-home-tab">
                             <div class="product-tab-discription">
                                 <div class="part">
                                     {{single_product.description | safe }}
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                        </div> {% endcomment %}
+                        <div class="tab-pane fade show active" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
                             <form class="theme-form">
                                 <div class="form-row row">
                                     <div class="col-md-12">
