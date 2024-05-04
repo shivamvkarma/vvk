@@ -69,6 +69,13 @@ def shop(request, category_slug=None):
             color_filters |= Q(variation__variation_category='color', variation__variation_value__iexact=color)
         products = products.filter(color_filters).distinct()
     
+    # Sorting
+    sort_option = request.GET.get('sort')
+    if sort_option == 'price_low_to_high':
+        products = products.order_by('selling_price')
+    elif sort_option == 'price_high_to_low':
+        products = products.order_by('-selling_price')
+
     # if gender_filter_values:
     #     products = products.filter(gender__in=gender_filter_values)
 
